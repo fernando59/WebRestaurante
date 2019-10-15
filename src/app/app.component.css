@@ -1,0 +1,21 @@
+.sideleft{
+    height: 100%;
+}
+.menu{
+    background: #333;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+}
+.menu a {
+padding: 10px;
+color: #fff;
+font-size: 1.2em;
+}
+main{
+    display: flex;
+    justify-content: space-between;
+}
