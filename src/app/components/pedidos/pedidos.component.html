@@ -1,1 +1,12 @@
-<p>pedidos works!</p>
+<mat-toolbar>
+        <mat-toolbar-row >
+                <h2 >Pedidos</h2>
+              </mat-toolbar-row>
+              <mat-toolbar-row class="menu-pedidos">
+                    <a [routerLink]="['mesas']">Mesas</a>
+                    <a [routerLink]="['pedido']">Pedido</a>
+              </mat-toolbar-row>
+   
+</mat-toolbar>
+
+<router-outlet></router-outlet>

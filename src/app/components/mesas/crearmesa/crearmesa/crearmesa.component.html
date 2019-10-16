@@ -1,0 +1,37 @@
+    <h2 class="titulo-crear-mesa">Crear mesa</h2>
+      <form class="example-form " #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="name-form">
+          <mat-form-field class="example-full-width">
+            <input required matInput
+            #nombre="ngModel"
+            name="nombre"
+            [(ngModel)]="_serviceMesa.mesaList.nombre"
+            placeholder="Nombre">
+          </mat-form-field> 
+          <mat-radio-group  
+             #estado="ngModel"
+             name="estado"
+             [(ngModel)]="_serviceMesa.mesaList.estado"
+             class="example-full-width"
+             aria-label="Select an option">
+                <mat-radio-button  value="2">Disponible</mat-radio-button>
+                <mat-radio-button value="1">Ocupada</mat-radio-button>
+              </mat-radio-group>
+         
+        </div>
+      
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" min="0" 
+          #capacidad="ngModel"
+          name="capacidad"
+          required
+          [(ngModel)]="_serviceMesa.mesaList.capacidad"    
+          placeholder="Capacidad">
+        </mat-form-field>
+      
+        <button mat-raised-button color="primary" 
+        [disabled]="form.invalid"
+        type="submit">Primary</button>
+      
+      
+      </form>

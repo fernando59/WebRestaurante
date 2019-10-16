@@ -1,0 +1,73 @@
+<button mat-button (click)="onClose()">
+        Cerrar
+      </button>
+      <form class="example-form form-persona" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="name-form">
+          <mat-form-field class="example-full-width">
+            <input required matInput
+            #nombre="ngModel"
+            name="nombre"
+            [(ngModel)]="_personaService.personalist.nombre"
+            placeholder="Nombre">
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width">
+            <input matInput
+            required
+            #apellido="ngModel"
+            name="apellido"
+            [(ngModel)]="_personaService.personalist.apellido"
+             placeholder="Apellido">
+          </mat-form-field>
+        </div>
+      
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" min="0" 
+          #edad="ngModel"
+          name="edad"
+          [(ngModel)]="_personaService.personalist.edad"    
+          placeholder="Edad">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <span matPrefix>+659 &nbsp;</span>
+          <input type="tel" matInput
+          required
+          value=""
+          #telefono="ngModel"
+          name="telefono"
+          [(ngModel)]="_personaService.personalist.telefono"
+          placeholder="Telefono">
+      
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Direccion"
+          #direccion="ngModel"
+          required
+          name="direccion"
+          [(ngModel)]="_personaService.personalist.direccion"
+          ></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Carnet" 
+           #ci="ngModel"
+           required
+           name="ci" 
+           [(ngModel)]="_personaService.personalist.ci">
+        </mat-form-field>
+        <!--Radio buton-->
+        <mat-radio-group 
+        #tipo_persona="ngModel"
+        name="tipo_persona" 
+        class="radio"
+        [(ngModel)]="_personaService.personalist.tipo"
+        aria-label="Select an option">
+            <mat-radio-button value="1">Mesero</mat-radio-button>
+            <mat-radio-button value="2">Cliente</mat-radio-button>
+          </mat-radio-group>
+     
+        <button mat-raised-button color="primary" 
+        [disabled]="form.invalid"
+        type="submit">Primary</button>
+      
+      
+      </form>

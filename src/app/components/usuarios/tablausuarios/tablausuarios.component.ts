@@ -13,6 +13,6 @@ export class TablausuariosComponent implements OnInit {
   listaUsuarios:MatTableDataSource<any>;
   //displayedColumns:string[]=['Nombre']
   ngOnInit() {
-  }aa
+  }
 
 }

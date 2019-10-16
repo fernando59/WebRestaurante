@@ -1,0 +1,26 @@
+.form-persona{
+    width: 600px;
+    height: 600px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.example-full-width {
+    width: 80%;
+    padding: 10px;
+  }
+  .name-form{
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+     
+  }
+  .radio{
+      width: 100%;
+      padding: 20px;
+  }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }

@@ -2,11 +2,14 @@
   <mat-toolbar-row>
     <span>Restaurante</span>
   </mat-toolbar-row>
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Abrir
-    </button>
-  </div>
+  <mat-toolbar-row>
+      <div class="example-sidenav-content">
+          <button type="button" mat-button (click)="drawer.toggle()">
+            Abrir
+          </button>
+        </div>
+  </mat-toolbar-row>
+
 
 </mat-toolbar>
 <!-- -----------------------------------------Side bar-->
@@ -16,8 +19,7 @@
         <a [routerLink]="['/inicio']">Inicio</a>
         <a [routerLink]="['/pedidos']">Pedidos</a>
         <a [routerLink]="['/usuarios']">Usuarios</a>
-        <a [routerLink]="['Inicio']">fdas</a>
-        <a [routerLink]="['Inicio']">fdas</a>
+       
        
       </div>
    
