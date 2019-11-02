@@ -12,7 +12,7 @@ import { CrearmesaComponent } from '../crearmesa/crearmesa/crearmesa.component';
 export class MesasComponent implements OnInit {
 
   constructor(
-    private _mesaService:MesaService,
+    private _serviceMesa:MesaService,
     private dialog:MatDialog,
   ) { }
 

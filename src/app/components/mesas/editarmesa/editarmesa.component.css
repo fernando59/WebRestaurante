@@ -1,0 +1,10 @@
+.titulo-crear-mesa{
+    padding: 20px;
+    text-align: center;
+    
+}
+.form{
+    display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+}

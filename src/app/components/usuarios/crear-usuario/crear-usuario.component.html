@@ -1,0 +1,58 @@
+<form class="container-usuario" #form="ngForm" (submit)="onSubmit(form) " [formGroup]="_serviceUsuario.form" autocomplete="off" >
+  <h3>Nuevo usuario</h3>
+  <mat-form-field>
+    <input type="hidden" name="codigo" formControlName="codigo">
+
+    <input
+     matInput
+     formControlName="nombre_usuario"
+     name="nombre_usuario"
+     required
+    placeholder="Usuario">
+    <mat-error *ngIf="_serviceUsuario.form.controls['nombre_usuario'].errors?.required">Campo obligatorio</mat-error>
+  
+  </mat-form-field>
+  <mat-form-field>
+    <input 
+    
+    name="password_usuario"
+    formControlName="password_usuario"
+    required matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'">
+    <mat-error *ngIf="_serviceUsuario.form.controls['password_usuario'].errors?.required">Campo obligatorio</mat-error>
+
+    <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide">
+     
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+    </button>
+
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input
+   
+    name="email"
+    formControlName="email"
+    matInput placeholder="Email" type="email"  required>
+    <mat-error *ngIf="_serviceUsuario.form.controls['email'].errors?.required">Campo obligatorio</mat-error>
+    <mat-error >Email invalido</mat-error>
+
+  </mat-form-field>
+  <div >
+    <mat-radio-group 
+    name="codigo_usuario"
+    formControlName="codigo_usuario"
+
+    >
+      <mat-radio-button value="1">Administrador</mat-radio-button>
+      <mat-radio-button value="2">Usuario</mat-radio-button>
+
+    </mat-radio-group>
+  </div>
+
+  <button type="submit"  [disabled]="form.invalid" mat-raised-button class="button">Crear</button>
+  
+
+</form>

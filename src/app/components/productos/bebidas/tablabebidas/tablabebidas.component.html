@@ -1,0 +1,87 @@
+    <!--<mat-form-field>
+        <input matInput placeholder="Buscar"  [(ngModel)]="buscar" autocomplete="off" (keyup)="filtrar()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClear()"> 
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field> -->
+
+     <mat-table [dataSource]="listaBebidas"  matSort class="tabla">
+            <!-- Position Column -->
+            <ng-container matColumnDef="codigo">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+             
+              <mat-cell *matCellDef="let bebida">{{bebida.codigo}} </mat-cell>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="nombre">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+              <mat-header-cell *matCellDef="let bebida"> {{bebida.nombre}} </mat-header-cell>
+            </ng-container>
+          
+            <!--APelldio         -->
+            <ng-container matColumnDef="descripcion">
+                    <mat-header-cell *matHeaderCellDef>Descripción </mat-header-cell>
+                    <mat-header-cell *matCellDef="let bebida"> {{bebida.descripcion}} </mat-header-cell>
+                  </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="precio">
+              <mat-header-cell *matHeaderCellDef>Precio </mat-header-cell>
+              <mat-header-cell *matCellDef="let bebida"> {{bebida.precio}} </mat-header-cell>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="sw_stock">
+              <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
+              <mat-header-cell *matCellDef="let bebida"> {{bebida.sw_stock}} </mat-header-cell>
+            </ng-container>
+    
+    
+            <ng-container matColumnDef="tipo_producto">
+                    <mat-header-cell *matHeaderCellDef>Tipo Producto</mat-header-cell>
+                    <mat-header-cell *matCellDef="let bebida"> {{bebida.tipo_producto}} </mat-header-cell>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="id_unidad_medida">
+                        <mat-header-cell *matHeaderCellDef>Unidad de Medida</mat-header-cell>
+                        <mat-header-cell *matCellDef="let bebida"> {{bebida.id_unidad_medida}} </mat-header-cell>
+                      </ng-container>
+            <!-- Opciones-->
+            <ng-container matColumnDef="Opciones">
+                    <mat-header-cell *matHeaderCellDef>
+    
+                    </mat-header-cell>
+                <mat-cell *matCellDef="let row,let mesa" >
+                  <div *ngIf="mesa.usuario!=null">
+                      <button mat-icon-button (click)="onEdit(row)">
+                          <mat-icon>launch</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="onDelete(row.codigo)">
+                      <mat-icon>delete</mat-icon>
+          </button>
+                  </div>
+                  <div *ngIf="mesa.usuario==null">
+                      <button mat-icon-button (click)="onCreate(row.codigo)">
+                          <mat-icon>New</mat-icon>
+              </button>
+           
+                  </div>
+                   
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="loading">
+              <mat-footer-cell *matFooterCellDef colspan="8">
+                Cargando   
+                <div class="cargando"></div>
+              </mat-footer-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+     <!-------------------------------------Carga--------------------------->
+    
+     
+            <mat-footer-row  *matFooterRowDef="['loading']" [ngClass]="{'hide':listaBebidas!=null}"></mat-footer-row>
+          </mat-table>
+          <!-------------------------------------Paginacion --------------------------->
+    
+          <mat-paginator [pageSizeOptions]="[5,10]" showFirtsLastButtons [pageSize]="5"></mat-paginator>

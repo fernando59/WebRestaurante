@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { MesaService } from 'src/app/services/mesa/mesa.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -17,7 +17,7 @@ export class CrearmesaComponent implements OnInit {
     private _serviceMesa:MesaService,
     private snackbar:MatSnackBar
   ) { }
-
+ 
   ngOnInit() {
     this.resetForm();
   }
@@ -28,10 +28,10 @@ export class CrearmesaComponent implements OnInit {
       form.reset();
 
     this._serviceMesa.mesaList={
-      id:0,
+      codigo:null,
       nombre:'',
-      estado:0,
-      capacidad:0
+      estado:null,
+      capacidad:null
 
     }
 

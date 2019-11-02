@@ -1,9 +1,9 @@
 <mat-table [dataSource]="listaMesas" class="tabla">
         <!-- Position Column -->
-        <ng-container matColumnDef="id">
+        <ng-container matColumnDef="codigo">
           <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
          
-          <mat-cell *matCellDef="let mesa">{{mesa.id}} </mat-cell>
+          <mat-cell *matCellDef="let mesa">{{mesa.codigo}} </mat-cell>
         </ng-container>
     
         <!-- Name Column -->
@@ -15,7 +15,7 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="estado">
           <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-          <mat-header-cell *matCellDef="let mesa"> {{mesa.estado}} </mat-header-cell>
+          <mat-header-cell *matCellDef="let mesa"> {{(mesa.estado==='B')?'Ocupado':'Desocupado'}} </mat-header-cell>
         </ng-container>
       
         <!-- Symbol Column -->
@@ -30,7 +30,7 @@
                 <button mat-icon-button (click)="onEdit(row)">
                             <mat-icon>launch</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="onDelete(row.id)">
+                <button mat-icon-button color="warn" (click)="onDelete(row.codigo)">
                         <mat-icon>delete</mat-icon>
             </button>
             </mat-cell>

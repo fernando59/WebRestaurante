@@ -25,16 +25,14 @@ export class FormulariopersonaComponent implements OnInit {
       form.reset();
 
     this._personaService.personalist={
-      id:0,
+      codigo:0,
       nombre:'',
       apellido:'',
       edad:0,
       telefono:'',
       direccion:'',
-      ci:'',
-      tipo_persona:'',
-      tipo:0
-
+      carnet:''
+  
     }
 
   }
@@ -54,8 +52,14 @@ export class FormulariopersonaComponent implements OnInit {
           duration:3000,
           verticalPosition:'top'
         })
-       
-      })
+        console.log(res)
+      },
+      error=>{
+        console.log(error)
+      }
+      
+      
+      )
     console.log(form.value)
   }
 

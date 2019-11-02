@@ -17,13 +17,17 @@ export class PersonaService {
     }
   getPersona():Observable<any>
   {
-      return this.http.get(this.url+'personas/mostrar.php');
+      return this.http.get(this.url+'usuarios/mostrar.php');
        
       
   }
   insertPersona(persona:Persona)
   {
     return this.http.post(this.url+'personas/crear.php',persona);
+  }
+  updatePesona(persona:Persona)
+  {
+    return this.http.put(this.url+'personas/editar.php',persona);
   }
 
   deletePersona(id:Number)

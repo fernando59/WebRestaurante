@@ -1,0 +1,30 @@
+.container-bebida{
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+}
+mat-form-field{
+    margin: 5px;
+}
+.button{
+    margin-top: 35px;
+    background: #218838;
+    font-size: 1.1em;
+    color:#fff;
+}
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+.example-right-align {
+    text-align: right;
+  }
+  input.stock::-webkit-outer-spin-button,
+  input.stock::-webkit-inner-spin-button
+  {
+      display: none;
+  }

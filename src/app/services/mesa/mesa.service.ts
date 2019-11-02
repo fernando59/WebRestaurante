@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Global } from '../global'
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,Subject } from 'rxjs';
 import {Mesa} from '../../models/mesa'
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,16 @@ export class MesaService {
   {
     return this.http.post(this.url+'mesas/crear.php',mesa);
   }
-
+  updateMesas(mesa:Mesa)
+  {
+    return this.http.put(this.url+'mesas/editar.php',mesa);
+  }
+  private _listener=new Subject<any>();
+  listen():Observable<any>{
+      return this._listener.asObservable();
+  }
+  filter(filterBy:string)
+  {
+    this._listener.next(filterBy);
+  }
 }

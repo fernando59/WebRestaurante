@@ -21,7 +21,7 @@ export class PersonasComponent implements OnInit {
   {
     const dialog=new MatDialogConfig();
     dialog.autoFocus=true;
-    
+    dialog.height='600px'
     this.dialog.open(FormulariopersonaComponent,dialog);
   }
 }

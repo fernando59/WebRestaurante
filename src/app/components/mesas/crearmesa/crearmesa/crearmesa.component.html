@@ -11,17 +11,18 @@
           <mat-radio-group  
              #estado="ngModel"
              name="estado"
+     
              [(ngModel)]="_serviceMesa.mesaList.estado"
-             class="example-full-width"
-             aria-label="Select an option">
-                <mat-radio-button  value="2">Disponible</mat-radio-button>
-                <mat-radio-button value="1">Ocupada</mat-radio-button>
+            
+             >
+                <mat-radio-button  value="A">Desocupada</mat-radio-button>
+                <mat-radio-button value="B">Ocupada</mat-radio-button>
               </mat-radio-group>
          
         </div>
       
         <mat-form-field class="example-full-width">
-          <input matInput type="number" min="0" 
+          <input matInput type="number" min="0" max="10"
           #capacidad="ngModel"
           name="capacidad"
           required

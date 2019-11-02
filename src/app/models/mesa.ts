@@ -1,6 +1,6 @@
-export class Mesa{
+export class  Mesa{
     constructor(
-        public id:Number,
+        public codigo:Number,
         public nombre:string,
         public capacidad:Number,
         public estado:Number

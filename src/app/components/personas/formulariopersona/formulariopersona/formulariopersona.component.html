@@ -1,6 +1,10 @@
-<button mat-button (click)="onClose()">
-        Cerrar
+<div class="form-header"> 
+    <h2>Nueva Persona</h2>
+    <button mat-button color="warn" (click)="onClose()">
+       X
       </button>
+</div>
+     
       <form class="example-form form-persona" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
         <div class="name-form">
           <mat-form-field class="example-full-width">
@@ -47,15 +51,16 @@
           [(ngModel)]="_personaService.personalist.direccion"
           ></textarea>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Carnet" 
-           #ci="ngModel"
+        <mat-form-field class="example-full-width" hintLabel="Máximo 10 caracteres">
+          <input #input maxlength="10" matInput placeholder="Carnet" 
+           #carnet="ngModel"
            required
-           name="ci" 
-           [(ngModel)]="_personaService.personalist.ci">
+           name="carnet" 
+           [(ngModel)]="_personaService.personalist.carnet">
+           <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
         </mat-form-field>
         <!--Radio buton-->
-        <mat-radio-group 
+       <!--<mat-radio-group 
         #tipo_persona="ngModel"
         name="tipo_persona" 
         class="radio"
@@ -63,11 +68,11 @@
         aria-label="Select an option">
             <mat-radio-button value="1">Mesero</mat-radio-button>
             <mat-radio-button value="2">Cliente</mat-radio-button>
-          </mat-radio-group>
+          </mat-radio-group> --> 
      
         <button mat-raised-button color="primary" 
         [disabled]="form.invalid"
-        type="submit">Primary</button>
+        type="submit">Agregar</button>
       
       
       </form>

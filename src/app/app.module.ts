@@ -15,11 +15,26 @@ import { TablausuariosComponent } from './components/usuarios/tablausuarios/tabl
 import { MesasComponent } from './components/mesas/mesas/mesas.component';
 import { TablamesasComponent } from './components/mesas/tablamesas/tablamesas.component';
 import { CrearmesaComponent } from './components/mesas/crearmesa/crearmesa/crearmesa.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { PedidoComponent } from './components/pedido/pedido/pedido.component';
 import { FormulariopersonaComponent } from './components/personas/formulariopersona/formulariopersona/formulariopersona.component';
 import { PersonasComponent } from './components/personas/personas/personas.component';
 import { TablapersonaComponent } from './components/personas/tablapersona/tablapersona/tablapersona.component';
+import { EditarmesaComponent } from './components/mesas/editarmesa/editarmesa.component';
+import { MesaService } from './services/mesa/mesa.service';
+import { CrearpedidoComponent } from './components/pedido/crearpedido/crearpedido.component';
+import { ModalmesaComponent } from './components/mesas/modalmesa/modalmesa.component';
+import { UsuarioService } from './services/usuario/usuario.service';
+import { EditarpersonaComponent } from './components/personas/editarpersona/editarpersona.component';
+import { CrearUsuarioComponent } from './components/usuarios/crear-usuario/crear-usuario.component';
+import { BebidasComponent } from './components/productos/bebidas/bebidas.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { PlatosComponent } from './components/productos/platos/platos.component';
+
+import { UMedidadComponent } from './components/productos/umedidad/umedidad.component';
+import { TablabebidasComponent } from './components/productos/bebidas/tablabebidas/tablabebidas.component';
+import { BebidaService } from './services/bebida/bebida.service';
+import { CrearbebidaComponent } from './components/productos/bebidas/crearbebida/crearbebida.component';
 
 
 @NgModule({
@@ -35,7 +50,20 @@ import { TablapersonaComponent } from './components/personas/tablapersona/tablap
     PedidoComponent,
     PersonasComponent,
     TablapersonaComponent,
-    FormulariopersonaComponent
+    FormulariopersonaComponent,
+    EditarmesaComponent,
+    CrearpedidoComponent,
+    ModalmesaComponent,
+    EditarpersonaComponent,
+    CrearUsuarioComponent,
+    PedidosComponent,
+    BebidasComponent,
+    ProductosComponent,
+    PlatosComponent,
+    UMedidadComponent,
+    TablabebidasComponent,
+    CrearbebidaComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -44,12 +72,18 @@ import { TablapersonaComponent } from './components/personas/tablapersona/tablap
     MaterialModule,
     routing,
     HttpClientModule,
-    FormsModule,
+    FormsModule,ReactiveFormsModule
   
     
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders,MesaService,UsuarioService,BebidaService],
   bootstrap: [AppComponent],
-  entryComponents:[CrearmesaComponent,FormulariopersonaComponent]
+  entryComponents:[CrearmesaComponent,
+                  FormulariopersonaComponent,
+                  EditarmesaComponent,
+                  ModalmesaComponent,
+                  EditarpersonaComponent,
+                  CrearUsuarioComponent,
+                CrearbebidaComponent]
 })
 export class AppModule { }

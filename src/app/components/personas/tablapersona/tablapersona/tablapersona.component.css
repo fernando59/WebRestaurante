@@ -1,0 +1,25 @@
+mat-footer-row mat-footer-cell{
+justify-content: center;
+font-style: italic;
+}
+.hide{
+    display: none;
+}
+.cargando{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation:move 2s infinite ease-in;
+    border: 2px solid #333;
+    border-top: 2px solid #fff;
+    margin-left: 8px;
+}
+mat-footer-row{
+    height: 300px;
+    width: 100%;
+}
+
+@keyframes move{
+    0%{transform: rotate(0deg)}
+    100%{transform: rotate(360deg)}
+}

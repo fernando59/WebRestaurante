@@ -1,0 +1,46 @@
+<form class="container-bebida" #form="ngForm" (submit)="onSubmit(form)" [formGroup]="_serviceBebida.form" autocomplete="off">
+     
+                <mat-form-field>
+                  <input matInput
+                  name="nombre"
+                  formControlName="nombre"
+                  placeholder="Nombre">
+                  <mat-error *ngIf="_serviceBebida.form.controls['nombre'].errors?.required">Campo obligatorio</mat-error>
+
+                </mat-form-field>
+              
+                <mat-form-field>
+                  <textarea matInput
+                  formControlName="descripcion"
+                  placeholder="Descripcion"></textarea>
+                  <mat-error *ngIf="_serviceBebida.form.controls['descripcion'].errors?.required">Campo obligatorio</mat-error>
+
+                </mat-form-field>
+                <mat-form-field>
+                        <input matInput placeholder="Precio"
+                        formControlName="precio"
+                         type="number" class="example-right-align">
+                        <span matPrefix>$&nbsp;</span>
+                        <span matSuffix>.00</span>
+                        <mat-error *ngIf="_serviceBebida.form.controls['precio'].errors?.required">Campo obligatorio</mat-error>
+                        <mat-error *ngIf="_serviceBebida.form.controls['precio'].errors?.min">Número mayor a cero</mat-error>
+
+                </mat-form-field>
+                <mat-form-field>
+                            <input
+                            formControlName="sw_stock"
+                            class="stock" type="number" matInput placeholder="Stock">
+                            <mat-error *ngIf="_serviceBebida.form.controls['sw_stock'].errors?.required">Campo obligatorio</mat-error>
+                            <mat-error *ngIf="_serviceBebida.form.controls['sw_stock'].errors?.min">Número mayor a cero</mat-error>
+                 </mat-form-field>  
+                <mat-form-field>
+                        
+                  <mat-select placeholder="Unidad de medida">
+                    <mat-option value="option">Option</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button type="submit"  [disabled]="form.invalid" mat-raised-button class="button">Crear</button>
+     
+              
+
+</form>

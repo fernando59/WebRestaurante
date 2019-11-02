@@ -24,3 +24,8 @@
   .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
   }
+  .form-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }

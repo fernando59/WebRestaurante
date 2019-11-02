@@ -1,0 +1,14 @@
+.container-usuario{
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+}
+mat-form-field{
+    margin: 5px;
+}
+.button{
+    margin-top: 35px;
+    background: #218838;
+    font-size: 1.1em;
+    color:#fff;
+}
