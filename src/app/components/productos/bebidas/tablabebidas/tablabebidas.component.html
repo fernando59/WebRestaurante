@@ -37,14 +37,11 @@
             </ng-container>
     
     
-            <ng-container matColumnDef="tipo_producto">
-                    <mat-header-cell *matHeaderCellDef>Tipo Producto</mat-header-cell>
-                    <mat-header-cell *matCellDef="let bebida"> {{bebida.tipo_producto}} </mat-header-cell>
-                  </ng-container>
     
-                  <ng-container matColumnDef="id_unidad_medida">
+                  <ng-container matColumnDef="unidad_de_medida">
                         <mat-header-cell *matHeaderCellDef>Unidad de Medida</mat-header-cell>
-                        <mat-header-cell *matCellDef="let bebida"> {{bebida.id_unidad_medida}} </mat-header-cell>
+                        <div matColumnDef="id_unidad_medida"></div>
+                        <mat-header-cell *matCellDef="let bebida"> {{bebida.unidad_de_medida}} </mat-header-cell>
                       </ng-container>
             <!-- Opciones-->
             <ng-container matColumnDef="Opciones">
@@ -52,7 +49,7 @@
     
                     </mat-header-cell>
                 <mat-cell *matCellDef="let row,let mesa" >
-                  <div *ngIf="mesa.usuario!=null">
+                  <div >
                       <button mat-icon-button (click)="onEdit(row)">
                           <mat-icon>launch</mat-icon>
               </button>
@@ -60,15 +57,13 @@
                       <mat-icon>delete</mat-icon>
           </button>
                   </div>
-                  <div *ngIf="mesa.usuario==null">
-                      <button mat-icon-button (click)="onCreate(row.codigo)">
-                          <mat-icon>New</mat-icon>
-              </button>
-           
-                  </div>
+             
                    
                 </mat-cell>
             </ng-container>
+
+
+
             <ng-container matColumnDef="loading">
               <mat-footer-cell *matFooterCellDef colspan="8">
                 Cargando   

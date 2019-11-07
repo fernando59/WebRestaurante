@@ -1,0 +1,22 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: flex-end;
+}
+header mat-icon{
+    text-align: end;
+}
+button{
+    width: 45%;
+    padding: 5px;
+   margin: 8px;
+   color: #fff;
+   font-size: 1.1em;
+}
+.accept{
+    background: #218838;
+}
+.cancel{
+    background: #F44336;
+}

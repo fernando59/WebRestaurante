@@ -19,7 +19,7 @@ export class BebidasComponent implements OnInit {
   {
     const dialog=new MatDialogConfig();
     dialog.autoFocus=true;
-    dialog.height='600px'
+    dialog.height='560px'
     this.dialog.open(CrearbebidaComponent,dialog);
   }
 }

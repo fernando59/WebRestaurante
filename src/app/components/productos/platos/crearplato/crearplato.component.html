@@ -1,12 +1,12 @@
 <h2>Nueva Bebida</h2>
-<form class="container-bebida" #form="ngForm" (submit)="onSubmit(form)" [formGroup]="_serviceBebida.form" autocomplete="off">
+<form class="container-bebida" #form="ngForm" (submit)="onSubmit(form)" [formGroup]="_serviceBebida.form2" autocomplete="off">
      
                 <mat-form-field>
                   <input matInput
                   name="nombre"
                   formControlName="nombre"
                   placeholder="Nombre">
-                  <mat-error *ngIf="_serviceBebida.form.controls['nombre'].errors?.required">Campo obligatorio</mat-error>
+                  <mat-error *ngIf="_serviceBebida.form2.controls['nombre'].errors?.required">Campo obligatorio</mat-error>
 
                 </mat-form-field>
               
@@ -14,7 +14,7 @@
                   <textarea matInput
                   formControlName="descripcion"
                   placeholder="Descripcion"></textarea>
-                  <mat-error *ngIf="_serviceBebida.form.controls['descripcion'].errors?.required">Campo obligatorio</mat-error>
+                  <mat-error *ngIf="_serviceBebida.form2.controls['descripcion'].errors?.required">Campo obligatorio</mat-error>
 
                 </mat-form-field>
                 <mat-form-field>
@@ -24,8 +24,8 @@
                          type="number" class="example-right-align">
                         <span matPrefix>$&nbsp;</span>
                         <span matSuffix>.00</span>
-                        <mat-error *ngIf="_serviceBebida.form.controls['precio'].errors?.required">Campo obligatorio</mat-error>
-                        <mat-error *ngIf="_serviceBebida.form.controls['precio'].errors?.min">Número mayor a cero</mat-error>
+                        <mat-error *ngIf="_serviceBebida.form2.controls['precio'].errors?.required">Campo obligatorio</mat-error>
+                        <mat-error *ngIf="_serviceBebida.form2.controls['precio'].errors?.min">Número mayor a cero</mat-error>
 
                 </mat-form-field>
                 <mat-form-field>
@@ -33,8 +33,8 @@
                             required
                             formControlName="sw_stock"
                             class="stock" type="number" matInput placeholder="Stock">
-                            <mat-error *ngIf="_serviceBebida.form.controls['sw_stock'].errors?.required">Campo obligatorio</mat-error>
-                            <mat-error *ngIf="_serviceBebida.form.controls['sw_stock'].errors?.min">Número mayor a cero</mat-error>
+                            <mat-error *ngIf="_serviceBebida.form2.controls['sw_stock'].errors?.required">Campo obligatorio</mat-error>
+                            <mat-error *ngIf="_serviceBebida.form2.controls['sw_stock'].errors?.min">Número mayor a cero</mat-error>
                  </mat-form-field>  
                 <mat-form-field>
                         

@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Bebida } from 'src/app/models/bebida';
+
 import { Global } from '../global';
 import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UnidadMedida } from 'src/app/models/unidadMedida';
+import { Producto } from 'src/app/models/producto';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class BebidaService {
 
     private url:string;
-    public bebidaList:Bebida;
+    public bebidaList:Producto;
   constructor(
     private http:HttpClient
 
@@ -22,17 +25,55 @@ export class BebidaService {
 //validaciones y control del formulario
 
 form:FormGroup=new FormGroup({
+  codigo:new FormControl(0),
   nombre:new FormControl('',Validators.required),
   descripcion:new FormControl('',[Validators.required,Validators.minLength(4)]),
-  precio:new FormControl(0,[Validators.required,Validators.min(0)]),
-  sw_stock:new FormControl(0,[Validators.required,Validators.min(0)]),
-  tipo_producto:new FormControl('B',[Validators.required]),
-  id_unidad_medida:new FormControl('',[Validators.required])
+  precio:new FormControl(0,[Validators.required,Validators.min(1)]),
+  sw_stock:new FormControl(0,[Validators.required,Validators.min(1)]),
+  tipo_producto:new FormControl('B',),
+  unidad_de_medida:new FormControl(''),
+  id_unidad_medida:new FormControl(0)
 
 })
+form2:FormGroup=new FormGroup({
+  codigo:new FormControl(0),
+  nombre:new FormControl('',Validators.required),
+  descripcion:new FormControl('',[Validators.required,Validators.minLength(4)]),
+  precio:new FormControl(0,[Validators.required,Validators.min(1)]),
+  sw_stock:new FormControl(0,[Validators.required,Validators.min(1)]),
+  tipo_producto:new FormControl('A',),
+  unidad_de_medida:new FormControl(''),
+  id_unidad_medida:new FormControl(0)
 
+})
   getBebida():Observable<any>
   {
    return this.http.get(this.url+'productos/bebidas.php');
+  }
+  getMedida():Observable<any>
+  {
+    return this.http.get(this.url+'productos/mostrarMedida.php');
+  }
+  insertBebida(producto:Producto)
+  {
+    return this.http.post(this.url+'productos/crear.php',producto);
+  }
+  updateBebida(producto:Producto)
+  {
+    return this.http.put(this.url+'productos/editar.php',producto);
+  }
+  deleteBebida(id)
+  {
+    return this.http.delete(this.url+'productos/eliminar.php?id='+id);
+  }
+
+  //----------------------------------------Platos----------------------------------------
+  getPlato():Observable<any>
+  {
+    return this.http.get(this.url+'productos/platos.php');
+  }
+  getMedida2():Observable<any>
+  {
+    return this.http.get(this.url+'productos/mostrarMedida2.php');
   }
 }

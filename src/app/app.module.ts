@@ -35,6 +35,11 @@ import { UMedidadComponent } from './components/productos/umedidad/umedidad.comp
 import { TablabebidasComponent } from './components/productos/bebidas/tablabebidas/tablabebidas.component';
 import { BebidaService } from './services/bebida/bebida.service';
 import { CrearbebidaComponent } from './components/productos/bebidas/crearbebida/crearbebida.component';
+import { EditarbebidasComponent } from './components/productos/bebidas/editarbebidas/editarbebidas.component';
+import { DialogComponent } from './components/dialog/dialog/dialog.component';
+import { TablaplatosComponent } from './components/productos/platos/tablaplatos/tablaplatos.component';
+import { CrearplatoComponent } from './components/productos/platos/crearplato/crearplato.component';
+import { EditarplatoComponent } from './components/productos/platos/editarplato/editarplato.component';
 
 
 @NgModule({
@@ -62,7 +67,12 @@ import { CrearbebidaComponent } from './components/productos/bebidas/crearbebida
     PlatosComponent,
     UMedidadComponent,
     TablabebidasComponent,
-    CrearbebidaComponent
+    CrearbebidaComponent,
+    EditarbebidasComponent,
+    DialogComponent,
+    TablaplatosComponent,
+    EditarplatoComponent,
+    CrearplatoComponent
     
   ],
   imports: [
@@ -84,6 +94,6 @@ import { CrearbebidaComponent } from './components/productos/bebidas/crearbebida
                   ModalmesaComponent,
                   EditarpersonaComponent,
                   CrearUsuarioComponent,
-                CrearbebidaComponent]
+                CrearbebidaComponent,EditarbebidasComponent,DialogComponent,CrearplatoComponent,EditarplatoComponent]
 })
 export class AppModule { }

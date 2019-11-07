@@ -1,4 +1,4 @@
-<h2>Nueva Bebida</h2>
+<h2>Editar Bebida</h2>
 <form class="container-bebida" #form="ngForm" (submit)="onSubmit(form)" [formGroup]="_serviceBebida.form" autocomplete="off">
      
                 <mat-form-field>
@@ -6,6 +6,7 @@
                   name="nombre"
                   formControlName="nombre"
                   placeholder="Nombre">
+                  
                   <mat-error *ngIf="_serviceBebida.form.controls['nombre'].errors?.required">Campo obligatorio</mat-error>
 
                 </mat-form-field>
@@ -47,7 +48,7 @@
                     *ngFor="let dl of unidadMedidaItems" [value]="dl.codigo">{{dl.nombre}}</mat-option>
                   </mat-select>
                 </mat-form-field>
-                <button type="submit"  [disabled]="form.invalid" mat-raised-button class="button">Crear</button>
+                <button type="submit"  [disabled]="form.invalid" mat-raised-button class="button">Editar</button>
      
               
 

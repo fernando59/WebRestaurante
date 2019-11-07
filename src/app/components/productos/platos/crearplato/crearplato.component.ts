@@ -1,36 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-
-import { element } from 'protractor';
-import { NgForm } from '@angular/forms';
 import { BebidaService } from 'src/app/services/bebida/bebida.service';
+import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
-  selector: 'app-crearbebida',
-  templateUrl: './crearbebida.component.html',
-  styleUrls: ['./crearbebida.component.css']
+  selector: 'app-crearplato',
+  templateUrl: './crearplato.component.html',
+  styleUrls: ['./crearplato.component.css']
 })
-export class CrearbebidaComponent implements OnInit {
+export class CrearplatoComponent implements OnInit {
 
   constructor(
     private _serviceBebida:BebidaService,
     private snackbar:MatSnackBar
   ) { }
-    //variables
-    public  unidadMedidaItems:any;
-
+  public  unidadMedidaItems:any;
   ngOnInit() {
     this.drowdownRefresh();
   }
 
-
-
-
-
-
   drowdownRefresh()
   {
-    this._serviceBebida.getMedida().subscribe(res=>{
+    this._serviceBebida.getMedida2().subscribe(res=>{
         this.unidadMedidaItems=res.data;
       
     },error=>{
@@ -40,7 +31,7 @@ export class CrearbebidaComponent implements OnInit {
   onSubmit(form:NgForm)
   {
     this._serviceBebida.insertBebida(form.value).subscribe(res=>{
-      this.snackbar.open('Creado exitosamente','',{
+      this.snackbar.open('Creado exitosamente','Hecho',{
         duration:3000,
         verticalPosition:'top'
   

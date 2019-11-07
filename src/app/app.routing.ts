@@ -11,10 +11,11 @@ import { CrearpedidoComponent } from './components/pedido/crearpedido/crearpedid
 import { ProductosComponent } from './components/productos/productos.component';
 import { BebidasComponent } from './components/productos/bebidas/bebidas.component';
 import { PlatosComponent } from './components/productos/platos/platos.component';
-import { UMedidaComponent } from './componentes/productos/u-medida/u-medida.component';
 import { UMedidadComponent } from './components/productos/umedidad/umedidad.component';
 
 const appRoutes:Routes=[
+    {path:'',redirectTo:'/login',pathMatch:'full'},
+    {path:'login',loadChildren:'./auth/auth.module#AuthModule'},
     {path:'',component:InicioComponent},
     {path:'pedidos',component:PedidosComponent
 ,children:[

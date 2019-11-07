@@ -1,0 +1,7 @@
+<div>
+    <div class="header">
+        <span>{{data.message}}</span>
+    </div>
+   <button mat-flat-button [mat-dialog-close]="true" class="accept">Aceptar</button>
+   <button mat-flat-button (click)="onClose()" [mat-dialog-close]="false" class="cancel">Cancelar</button>
+</div>
