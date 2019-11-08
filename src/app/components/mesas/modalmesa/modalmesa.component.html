@@ -1,24 +1,36 @@
-<div class="container-modalmesa">
+<form class="container-modalmesa" (submit)="onSubmit()">
     <div class="icon-salir">
         <button (click)="onClose()">X</button>
     </div>
     <div class="header-mesa">
-            <h2>{{this._serviceMesa.mesaList.nombre}}</h2>
-    </div>    
-   <div class="body-mesa">
-        <h3>Nombre del cliente</h3>
-        <input matInput type="text" placeholder="dsa">
-        <h3>Nombre del mesero</h3>
-        <input matInput type="text">
-        <h3>Comentario</h3>
-        <textarea name="" id="" cols="30" rows="5"></textarea>
-   </div>
-   <div class="footer-mesa">
-       <button  mat-button mat-dialog-close>
-           Cancelar
-       </button>
-       <a class="button-abrir">Abrir Mesa</a>
-   </div>
+        <h2>{{this._serviceMesa.mesaList.nombre}}</h2>
+    </div>
+<div class="row">
+    <mat-form-field>
+        <input matInput placeholder="Cliente">
+        <button mat-icon-button matSuffix>
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
 
+    <mat-form-field>
+        <mat-select placeholder="Meseros">
+            <mat-option *ngFor="let dl of meserosItems" [value]="dl.codigo">{{dl.nombre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Direccion"></textarea>
+    </mat-form-field>
 </div>
+    
+
+    <div class="footer-mesa">
+        <button mat-button mat-dialog-close>
+            Cancelar
+        </button>
+        <a class="button-abrir" (click)="onOpen()" >Abrir Mesa</a>
+    </div>
+
+
+</form>

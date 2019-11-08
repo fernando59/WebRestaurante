@@ -22,6 +22,7 @@ const appRoutes:Routes=[
     {path:'',component:PedidoComponent},
     {path:'mesas',component:MesasComponent},
     {path:'pedido',component:PedidoComponent},
+     {path:'crear',component:CrearpedidoComponent},
     {path:'nuevo',component:CrearpedidoComponent}
     
 ]},

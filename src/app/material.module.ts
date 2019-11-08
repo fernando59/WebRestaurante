@@ -8,19 +8,21 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
+import {MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @NgModule({
     imports:[MatMenuModule,MatButtonModule,
         MatToolbarModule,MatSidenavModule,
         MatTableModule,MatIconModule,MatSnackBarModule,MatDialogModule,
         MatFormFieldModule,MatInputModule,MatRadioModule,MatCardModule,MatExpansionModule,
-    MatPaginatorModule,MatSortModule,MatSelectModule],
+    MatPaginatorModule,MatSortModule,MatSelectModule,MatGridListModule,MatDatepickerModule,MatNativeDateModule],
 
 
 
@@ -28,7 +30,7 @@ import {MatSelectModule} from '@angular/material/select';
         MatToolbarModule,MatSidenavModule,
         MatTableModule,MatIconModule,MatSnackBarModule,MatDialogModule,
         MatFormFieldModule,MatInputModule,MatRadioModule,MatCardModule,MatExpansionModule,
-    MatPaginatorModule,MatSortModule,MatSelectModule]
+    MatPaginatorModule,MatSortModule,MatSelectModule,MatGridListModule,MatDatepickerModule,MatNativeDateModule]
 })
 
 export class MaterialModule{}

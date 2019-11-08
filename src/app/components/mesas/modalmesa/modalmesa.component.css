@@ -3,16 +3,11 @@
     height: 500px;
 }
 .header-mesa{
-    height: 150px;
+    height: 80px;
     width: 100%;
     border-bottom: 1px solid #ddd;
     text-align: center;
 
-}
-.body-mesa{
-    background: #E8ECEF;
-    height: 300px;
-    width: 100%;
 }
 .icon-salir{
     text-align: end;
@@ -47,4 +42,10 @@ a:hover{
     align-items: center;
     justify-content: flex-end;
     padding: 5px;
+    margin-top: 40px;
+}
+.row{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
 }

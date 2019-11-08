@@ -40,6 +40,8 @@ import { DialogComponent } from './components/dialog/dialog/dialog.component';
 import { TablaplatosComponent } from './components/productos/platos/tablaplatos/tablaplatos.component';
 import { CrearplatoComponent } from './components/productos/platos/crearplato/crearplato.component';
 import { EditarplatoComponent } from './components/productos/platos/editarplato/editarplato.component';
+import { TablamenuComponent } from './components/pedido/tablamenu/tablamenu.component';
+import { FormpedidoComponent } from './components/pedido/formpedido/formpedido.component';
 
 
 @NgModule({
@@ -72,7 +74,9 @@ import { EditarplatoComponent } from './components/productos/platos/editarplato/
     DialogComponent,
     TablaplatosComponent,
     EditarplatoComponent,
-    CrearplatoComponent
+    CrearplatoComponent,
+    TablamenuComponent,
+    FormpedidoComponent
     
   ],
   imports: [

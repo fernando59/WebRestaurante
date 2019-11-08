@@ -1,21 +1,26 @@
-<div class="card-container">
-        <div *ngFor="let mesa of mesas">
-                <mat-card [style.border]="mesa.estado=='A'?'4px solid green':'4px solid red'" class="card">
-                    <div class="button-container">
-                        <button class="button-a" (click)="abrirMesa(mesa)">Habilitar</button>
-                       <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
-                            <h3>{{mesa.nombre}}</h3>
-                    </div>    
-                    
-                    
-                    <h4>Espacio :{{mesa.capacidad}}</h4>
-                    <span>Fernando mercado saby</span>
-                    <div>
-                        <span>Total</span>
-                        <span>300</span>
-                    </div>
-                    
-                </mat-card>
-            </div>
-</div>
+
+        <mat-grid-list cols="4" rowHeight="200px">
+                <mat-grid-tile *ngFor="let mesa of mesas">
+                        <div >
+                                <mat-card [style.border]="mesa.estado=='A'?'4px solid green':'4px solid red'" class="card">
+                                    <div class="button-container">
+                                        <button class="button-a" (click)="abrirMesa(mesa)">Habilitar</button>
+                                       <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
+                                            <h3>{{mesa.nombre}}</h3>
+                                    </div>    
+                                    
+                                    
+                                    <h4>Espacio :{{mesa.capacidad}}</h4>
+                                    <span>Fernando mercado saby</span>
+                                    <div>
+                                        <span>Total</span>
+                                        <span>300</span>
+                                    </div>
+                                    
+                                </mat-card>
+                            </div>
+                </mat-grid-tile> 
+    
+        </mat-grid-list>
+
 

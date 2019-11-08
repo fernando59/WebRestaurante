@@ -1,0 +1,14 @@
+<table>
+      <tr *ngFor="let bebidas of bebidaslist">
+          <td >
+          
+                <h2>{{bebidas.nombre}}</h2>
+                <h3>{{bebidas.precio|currency}}</h3>
+            </td>
+       
+          <td><button mat-icon-button (click)="onAdd(bebidas)"><mat-icon>add</mat-icon></button></td>
+          <td><button><mat-icon>fda</mat-icon></button></td>
+      </tr>
+</table>
+
+<p></p>

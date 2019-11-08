@@ -1,9 +1,16 @@
-<div class="mitad">
-    <div  class="left-c">
-        <button (click)="abrirMesa()">atras</button>
-        <h2>{{mesa_nombre}}</h2>
+<div class="container">
+    <div class="categorys">
+        <button (click)="onDrop('categoria')" >Fideos</button>
+        <button (click)="onDrop('sushis')">Sushis</button>
+        <button (click)="onDrop('gaseosas')">Gaseosas</button>
+        <button (click)="onDrop('refrescos')">Refrescos</button>
+        <button (click)="onDrop('sopas')">Sopas</button>
+        <button (click)="onDrop('parrilla')">Parilla</button>
     </div>
-    <div class="right-c">
-        <input type="text" value="Buscar producto">
+    <div class="menu">
+        <app-tablamenu [categoria]="categoria" (producto)="enviarDatos($event)"></app-tablamenu>
+    </div>
+    <div class="caja">
+        <app-formpedido [producto]="producto"></app-formpedido>
     </div>
 </div>

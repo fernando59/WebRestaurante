@@ -34,4 +34,9 @@ export class PersonaService {
   {
     return this.http.delete(this.url+'personas/eliminar.php?id='+id);
   }
+
+  dropdownMesero():Observable<any>
+  {
+    return this.http.get(this.url+'personas/meseros.php');
+  }
 }
