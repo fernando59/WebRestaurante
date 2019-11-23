@@ -18,7 +18,7 @@ export class CrearReservaComponent implements OnInit {
 
   constructor(
     private _serviceMesa:MesaService,
-    private _serviceReserva:ReservaService,
+    public _serviceReserva:ReservaService,
     private dialog:MatDialog,
     private snackbar:MatSnackBar
     

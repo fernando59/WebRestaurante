@@ -14,7 +14,7 @@ export class CrearmesaComponent implements OnInit {
 
   constructor(
     public dialobox:MatDialogRef<CrearmesaComponent>,
-    private _serviceMesa:MesaService,
+    public _serviceMesa:MesaService,
     private snackbar:MatSnackBar
   ) { }
  
