@@ -1,9 +1,16 @@
-    <!--<mat-form-field>
-        <input matInput placeholder="Buscar"  [(ngModel)]="buscar" autocomplete="off" (keyup)="filtrar()">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClear()"> 
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field> -->
+<mat-form-field>
+  <input matInput placeholder="Buscar"  [(ngModel)]="buscar" autocomplete="off" (keyup)="filtrar()">
+  <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClear()"> 
+    <mat-icon>close</mat-icon>
+  </button>
+
+</mat-form-field>
+<button mat-raised-button (click)="exportExcel()" class="excel">
+    Excel
+    <mat-icon>
+      trending_down
+    </mat-icon>
+</button>
 
       <mat-table [dataSource]="listaBebidas"  matSort class="tabla">
         <!-- Position Column -->

@@ -3,6 +3,7 @@ import { Global } from '../global'
 import { HttpClient } from '@angular/common/http';
 import { Observable,Subject } from 'rxjs';
 import {Mesa} from '../../models/mesa'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,12 @@ export class MesaService {
   {
     this.url = Global.url;
   }
-
+  form:FormGroup=new FormGroup({
+    codigo:new FormControl(0),
+    nombre:new FormControl('',Validators.required),
+    capacidad:new FormControl(0,[Validators.required,Validators.min(1),Validators.max(10)]),
+    estado:new FormControl('A')
+     })
    getMesas():Observable<any>
   {
     return this.http.get(this.url+'mesas/mostrar.php');

@@ -4,6 +4,7 @@ import { MatDialog, MatSnackBar, MatTableDataSource, MatSort, MatPaginator } fro
 import { EditarplatoComponent } from '../editarplato/editarplato.component';
 import { Producto } from 'src/app/models/producto';
 import { DialogComponent } from 'src/app/components/dialog/dialog/dialog.component';
+import { ExporterService } from 'src/app/services/exporter/exporter.service';
 
 @Component({
   selector: 'app-tablaplatos',
@@ -15,7 +16,8 @@ export class TablaplatosComponent implements OnInit {
   constructor(
     private _serviceBebida:BebidaService,
     private dialog:MatDialog,
-    private snackbar:MatSnackBar
+    private snackbar:MatSnackBar,
+    private exports:ExporterService
   ) { }
   //variables
   buscar:string;
@@ -72,4 +74,17 @@ export class TablaplatosComponent implements OnInit {
      
       });
   }
+  onClear()
+   {
+     this.buscar="";
+     this.filtrar();
+   }
+   filtrar()
+   {
+     this.listaBebidas.filter=this.buscar.trim().toLowerCase();
+   }
+   exportExcel()
+   {
+ this.exports.exportToExcel(this.listaBebidas.data,'my_export')
+   }
 }

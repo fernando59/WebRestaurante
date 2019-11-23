@@ -1,28 +1,16 @@
 <h2 class="titulo-crear-mesa">Editar mesa</h2>
-<form class="form " #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+<form class="form " #form="ngForm"  [formGroup]="_serviceMesa.form" (submit)="onSubmit(form)" autocomplete="off">
   <div class="name-form">
-      <mat-form-field class="codigo-invalido">
-          <input matInput required readonly="readonly"
-          #codigo="ngModel"
-          name="codigo"
-          
-          [(ngModel)]="_serviceMesa.mesaList.codigo"
-          >
-        </mat-form-field> 
+  
  
     <mat-form-field class="example-full-width">
       <input required matInput
-      #nombre="ngModel"
-      name="nombre"
-      [(ngModel)]="_serviceMesa.mesaList.nombre"
+      formControlName="nombre"
       placeholder="Nombre">
     </mat-form-field> 
     
     <mat-radio-group  
-       #estado="ngModel"
-       name="estado"
-
-       [(ngModel)]="_serviceMesa.mesaList.estado"
+    formControlName="estado"
       
        >
           <mat-radio-button value="A">Desocupada</mat-radio-button>
@@ -33,10 +21,7 @@
 
   <mat-form-field class="example-full-width">
     <input matInput type="number" min="0" max="10"
-    #capacidad="ngModel"
-    name="capacidad"
-    required
-    [(ngModel)]="_serviceMesa.mesaList.capacidad"    
+    formControlName="capacidad"  
     placeholder="Capacidad">
   </mat-form-field>
 

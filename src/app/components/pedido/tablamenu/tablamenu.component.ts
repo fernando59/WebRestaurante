@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges , EventEmitter, Output} from '@angular/core';
 import { BebidaService } from 'src/app/services/bebida/bebida.service';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
   selector: 'app-tablamenu',
@@ -13,8 +14,8 @@ export class TablamenuComponent implements OnInit, OnChanges {
   ) { }
 
     @Input()  categoria:string;
-    public bebidaslist:any;
-     @Output() producto =new EventEmitter<Number>();
+    public bebidaslist:Producto;
+     @Output() producto =new EventEmitter<Producto>();
   ngOnInit() {
    
   
@@ -34,8 +35,8 @@ export class TablamenuComponent implements OnInit, OnChanges {
       console.log(this.bebidaslist)
     })
   }
-  onAdd(producto){
+  onAdd(producto:Producto){
     this.producto.emit(producto);
-    
+    console.log('e')
   }
 }

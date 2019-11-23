@@ -1,0 +1,9 @@
+h2{
+    text-align: center;
+}
+button{
+    background: rebeccapurple;
+    border: none;
+    margin: 10px;
+    color: #fff;
+}

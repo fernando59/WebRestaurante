@@ -14,35 +14,23 @@ export class EditarmesaComponent implements OnInit {
     private dialobox:MatDialogRef<EditarmesaComponent>,
     private _serviceMesa:MesaService,
     private snackbar:MatSnackBar,
+   
   
   ) { }
 
-  resetForm(form?:NgForm)
-  {
-    if(form!= null)
-      form.reset();
-
-    this._serviceMesa.mesaList={
-      codigo:0,
-      nombre:'',
-      estado:0,
-      capacidad:0
-
-    }
-
-  }
+ 
   ngOnInit() {
-    this._serviceMesa.mesaList=this.data;
-    console.log(this._serviceMesa.mesaList)
+    this._serviceMesa.form.setValue(this.data);
+
    }
   onSubmit(form:NgForm)
   {
-    console.log(form.value)
       this._serviceMesa.updateMesas(form.value).subscribe(res=>{
         this.snackbar.open('Editado correctamente','',{
           duration:3000,
           verticalPosition:'top'
       })
+      this.dialobox.close();
        },
        error=>{
          console.log(error)

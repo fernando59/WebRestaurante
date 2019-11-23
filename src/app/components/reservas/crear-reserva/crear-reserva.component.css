@@ -1,0 +1,24 @@
+.stock{
+    text-align: right;
+  } 
+  input.stock::-webkit-outer-spin-button,
+  input.stock::-webkit-inner-spin-button
+  {
+      display: none;
+  }
+form{
+   display: flex;
+   flex-direction: column;
+   width: 500px;
+    
+}
+.columna{
+    display: flex;
+    justify-content: space-around;
+}
+.button{
+    margin-top: 35px;
+    background: #218838;
+    font-size: 1.1em;
+    color:#fff;
+}

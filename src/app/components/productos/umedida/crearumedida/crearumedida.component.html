@@ -1,0 +1,94 @@
+<div class="dialog">
+  <button (click)="onClose()" color="warn" mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<h2>Unidad Medida</h2>
+<div class="container">
+
+    <div class="tabla1"> 
+
+      <mat-table [dataSource]="listaMedida"  matSort class="tabla">
+        <!-- Position Column -->
+        <ng-container matColumnDef="codigo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+         
+          <mat-cell *matCellDef="let bebida">{{bebida.codigo}} </mat-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="nombre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-header-cell *matCellDef="let bebida"> {{bebida.nombre}} </mat-header-cell>
+        </ng-container>
+      
+        <!--APelldio         -->
+        <ng-container matColumnDef="tipo">
+                <mat-header-cell *matHeaderCellDef>Tipo </mat-header-cell>
+                <mat-header-cell *matCellDef="let bebida">
+                   {{(bebida.tipo==='A')?'Comida':'Bebida'}} </mat-header-cell>
+              </ng-container>
+        <!-- Weight Column -->
+       
+        <!-- Opciones-->
+        <ng-container matColumnDef="Opciones">
+                <mat-header-cell *matHeaderCellDef>
+
+                    </mat-header-cell>
+              
+            <mat-cell *matCellDef="let row,let mesa" >
+              <div >
+                  <button mat-icon-button (click)="onEdit(row)">
+                      <mat-icon>launch</mat-icon>
+          </button>
+                 <button mat-icon-button color="warn" (click)="onDelete(row.codigo)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+         
+               
+            </mat-cell>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="loading">
+          <mat-footer-cell *matFooterCellDef colspan="5">
+            Cargando   
+            <div class="cargando"></div>
+          </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+ <!-------------------------------------Carga--------------------------->
+
+ 
+        <mat-footer-row  *matFooterRowDef="['loading']" [ngClass]="{'hide':listaMedida!=null}"></mat-footer-row>
+      </mat-table>
+      <!-------------------------------------Paginacion --------------------------->
+
+      <mat-paginator [pageSizeOptions]="[5,10]" showFirtsLastButtons [pageSize]="5"></mat-paginator>
+    </div>
+
+<form #formDirective="ngForm"  class="form" (submit)="onSubmit(form,formDirective)" #form="ngForm" [formGroup]="_serviceUmedida.form" autocomplete="off">
+            <h2>Nuevo Tipo de Medida</h2>
+     
+    <mat-form-field>
+        <input matInput formControlName="nombre" placeholder="Nombre">
+
+        <mat-error *ngIf="_serviceUmedida.form.controls['nombre'].errors?.required">Campo obligatorio</mat-error>
+
+    </mat-form-field>
+    <mat-radio-group  
+        
+        formControlName="tipo"
+            
+            
+             >
+                <mat-radio-button  value="A">Comidas</mat-radio-button>
+                <mat-radio-button value="B">Bebidas</mat-radio-button>
+              </mat-radio-group>
+    <button type="submit" [disabled]="form.invalid" mat-raised-button class="button">{{this.nombre}}</button>
+
+</form>
+</div>

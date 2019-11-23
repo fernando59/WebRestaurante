@@ -39,4 +39,8 @@ export class PersonaService {
   {
     return this.http.get(this.url+'personas/meseros.php');
   }
+  getCliente():Observable<any>
+  {
+    return this.http.get(this.url+'personas/cliente.php');
+  }
 }

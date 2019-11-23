@@ -1,0 +1,68 @@
+<h2>Datos principales de la reserva</h2>
+<form  #form="ngForm" (submit)="onSubmit(form,select)" [formGroup]="_serviceReserva.form" autocomplete="off">
+        <div class="columna">
+            <div >
+                    <mat-form-field>
+                            <input
+                            formControlName="fecha"
+                            type="text"
+                            matInput [matDatepicker]="picker" placeholder="Fecha">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="_serviceReserva.form.controls['fecha'].errors?.required">Campo obligatorio</mat-error>
+
+                          </mat-form-field>
+                    
+                          <mat-form-field>
+                              <input 
+                              matInput
+                              formControlName="hora"
+                              placeholder="Hora" aria-label="12hr format" [ngxTimepicker]="default" readonly>
+                              <ngx-material-timepicker #default></ngx-material-timepicker>
+                            </mat-form-field>
+                    
+            </div>
+   
+      <div>
+            <mat-form-field>
+                    <input
+                    required
+                    formControlName="numero_personas"
+                    class="stock" type="number" matInput placeholder="Cantidad de personas">
+             <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.required">Campo obligatorio</mat-error>
+                    <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.min">Número mayor a cero</mat-error>
+            </mat-form-field>  
+            
+            <mat-form-field>
+                    <mat-label>Mesas</mat-label>
+                    <mat-select name="select" #select   multiple>
+                      <mat-option
+                    
+                      *ngFor="let mesa of listamesas" [value]="mesa.codigo">
+                        Nombre  
+                        {{mesa.nombre}}
+                        Capacidad
+                          {{mesa.capacidad}}
+                        </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+      </div>
+     
+</div>
+<mat-form-field>
+        <textarea 
+        formControlName="observaciones"
+        matInput placeholder="Observaciones"></textarea>
+        <mat-error *ngIf="_serviceReserva.form.controls['observaciones'].errors?.required">Campo obligatorio</mat-error>
+
+      </mat-form-field>
+      <mat-form-field>
+          <input 
+          formControlName="nombre_cliente"
+          matInput placeholder="Cliente">
+          <button mat-icon-button matSuffix (click)="onOpen()">
+              <mat-icon>search</mat-icon>
+          </button>
+      </mat-form-field>
+      <button type="submit"  [disabled]="form.invalid" mat-raised-button class="button" >Reservar</button>
+</form>

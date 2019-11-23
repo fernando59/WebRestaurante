@@ -1,3 +1,9 @@
+.container{
+    display: flex;
+ 
+    width: 100%;
+
+}
 mat-footer-row mat-footer-cell{
     justify-content: center;
     font-style: italic;
@@ -23,11 +29,33 @@ mat-footer-row mat-footer-cell{
         0%{transform: rotate(0deg)}
         100%{transform: rotate(360deg)}
     }
-    .excel{
-        background: #33832C;
+    
+
+    h2{
+        text-align: center;
+        padding: 10px;
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 250px;
+        padding: 10px;
+    }
+    .tabla{
+        overflow: auto;
+        max-height: 400px;
+        margin-right: 5px;
+    }
+    .tabla1{
+        flex-grow:1;
+       
+    }
+    .button{
+        background: #218838;
         color: #fff;
         font-size: 1.1em;
-        text-align: center;
-        border: none;
-        margin-left: 20px;
+    }
+    .dialog{
+        text-align: end;
     }

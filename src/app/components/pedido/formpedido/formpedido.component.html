@@ -1,6 +1,6 @@
 <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off"   >
         <div class="costo">
-            <span>15</span>
+            <span>{{suma}}</span>
         </div>
         <mat-form-field>
                 <input matInput [matDatepicker]="picker" placeholder="Fecha">
@@ -17,9 +17,9 @@
 </form>
 
 
-<div *ngFor="let producto1 of this.productos">
+<div *ngFor="let p of producto">
        
-                {{producto1|json}}
+                {{p.nombre}}
         
 </div>
 

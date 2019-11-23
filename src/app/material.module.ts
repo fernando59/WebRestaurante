@@ -17,12 +17,14 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 @NgModule({
     imports:[MatMenuModule,MatButtonModule,
         MatToolbarModule,MatSidenavModule,
         MatTableModule,MatIconModule,MatSnackBarModule,MatDialogModule,
         MatFormFieldModule,MatInputModule,MatRadioModule,MatCardModule,MatExpansionModule,
-    MatPaginatorModule,MatSortModule,MatSelectModule,MatGridListModule,MatDatepickerModule,MatNativeDateModule],
+    MatPaginatorModule,MatSortModule,MatSelectModule,MatGridListModule,MatDatepickerModule,MatNativeDateModule,
+    NgxMaterialTimepickerModule],
 
 
 
@@ -30,7 +32,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
         MatToolbarModule,MatSidenavModule,
         MatTableModule,MatIconModule,MatSnackBarModule,MatDialogModule,
         MatFormFieldModule,MatInputModule,MatRadioModule,MatCardModule,MatExpansionModule,
-    MatPaginatorModule,MatSortModule,MatSelectModule,MatGridListModule,MatDatepickerModule,MatNativeDateModule]
+    MatPaginatorModule,MatSortModule,MatSelectModule,MatGridListModule,MatDatepickerModule,MatNativeDateModule,
+    NgxMaterialTimepickerModule]
 })
 
 export class MaterialModule{}

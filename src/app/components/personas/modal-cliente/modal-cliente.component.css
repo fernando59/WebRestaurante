@@ -1,3 +1,8 @@
+.delete{
+   display: flex;
+   justify-content: flex-end;
+   width: 100%;
+}
 mat-footer-row mat-footer-cell{
     justify-content: center;
     font-style: italic;
@@ -23,11 +28,12 @@ mat-footer-row mat-footer-cell{
         0%{transform: rotate(0deg)}
         100%{transform: rotate(360deg)}
     }
-    .excel{
-        background: #33832C;
-        color: #fff;
-        font-size: 1.1em;
+    
+    h2{
         text-align: center;
-        border: none;
-        margin-left: 20px;
+
     }
+    .element-row:hover {
+        background: #f5f5f5;
+        cursor: pointer;
+      }

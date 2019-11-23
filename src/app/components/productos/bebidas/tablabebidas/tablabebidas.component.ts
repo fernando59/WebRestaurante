@@ -71,4 +71,13 @@ export class TablabebidasComponent implements OnInit {
      
       });
   }
+  onClear()
+   {
+     this.buscar="";
+     this.filtrar();
+   }
+   filtrar()
+   {
+     this.listaBebidas.filter=this.buscar.trim().toLowerCase();
+   }
 }

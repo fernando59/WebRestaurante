@@ -1,0 +1,10 @@
+h2{
+    text-align: center;
+}
+
+.herramientas{
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}

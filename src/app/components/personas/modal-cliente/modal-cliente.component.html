@@ -1,0 +1,93 @@
+<div class="delete">
+        <button mat-icon-button (click)="onClose()" >
+                <mat-icon>close</mat-icon>
+            </button>
+            
+</div>
+<h2>Lista de Clientes</h2>
+<mat-form-field>
+        <input matInput placeholder="Buscar"  [(ngModel)]="buscar" autocomplete="off" (keyup)="filtrar()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClear()"> 
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+<mat-table [dataSource]="listaPersonas"  matSort class="tabla" >
+        <!-- Position Column -->
+       
+        <ng-container matColumnDef="codigo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+         
+          <mat-cell *matCellDef="let mesa">{{mesa.codigo}} </mat-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="nombre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-header-cell *matCellDef="let mesa"> {{mesa.nombre}} </mat-header-cell>
+        </ng-container>
+      
+        <!--APelldio         -->
+        <ng-container matColumnDef="apellido">
+                <mat-header-cell *matHeaderCellDef>Apellido </mat-header-cell>
+                <mat-header-cell *matCellDef="let mesa"> {{mesa.apellido}} </mat-header-cell>
+              </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="telefono">
+          <mat-header-cell *matHeaderCellDef>Telefono</mat-header-cell>
+          <mat-header-cell *matCellDef="let mesa"> {{mesa.telefono}} </mat-header-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="direccion">
+                <mat-header-cell *matHeaderCellDef>Direccion</mat-header-cell>
+                <mat-header-cell *matCellDef="let mesa"> {{mesa.direccion}} </mat-header-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="carnet">
+                    <mat-header-cell *matHeaderCellDef>Carnet </mat-header-cell>
+                    <mat-header-cell *matCellDef="let mesa"> {{mesa.carnet}} </mat-header-cell>
+                  </ng-container>
+        <!-- Opciones-->
+        <!--     
+        <ng-container matColumnDef="Opciones">
+                <mat-header-cell *matHeaderCellDef>
+
+                </mat-header-cell>
+            <mat-cell *matCellDef="let row,let mesa" >
+              <div *ngIf="mesa.usuario!=null">
+                  <button mat-icon-button (click)="onEdit(row)">
+                      <mat-icon>launch</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="onDelete(row.codigo)">
+                  <mat-icon>delete</mat-icon>
+      </button>
+              </div>
+              <div *ngIf="mesa.usuario==null">
+                  <button mat-icon-button (click)="onCreate(row.codigo)">
+                      <mat-icon>New</mat-icon>
+          </button>
+       
+              </div>
+               
+            </mat-cell>
+        </ng-container>
+         -->
+       
+
+        <ng-container matColumnDef="loading">
+          <mat-footer-cell *matFooterCellDef colspan="10">
+            Cargando   
+            <div class="cargando"></div>
+          </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row (click)="selectRow(row)" class="element-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+ <!-------------------------------------Carga--------------------------->
+
+ 
+        <mat-footer-row  *matFooterRowDef="['loading']" [ngClass]="{'hide':listaPersonas!=null}"></mat-footer-row>
+      </mat-table>
+      <!-------------------------------------Paginacion --------------------------->
+
+      <mat-paginator [pageSizeOptions]="[5,10]" showFirtsLastButtons [pageSize]="5"></mat-paginator>

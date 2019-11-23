@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ModalmesaComponent } from '../../mesas/modalmesa/modalmesa.component';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
   selector: 'app-crearpedido',
@@ -16,7 +17,7 @@ export class CrearpedidoComponent implements OnInit {
   ) { }
 
     public categoria:string;
-    public producto:any;
+    public producto:Producto;
   ngOnInit() {
     
   }
@@ -35,7 +36,7 @@ export class CrearpedidoComponent implements OnInit {
     this.dialog.open(ModalmesaComponent,dialog);
   }
 
-  enviarDatos(producto)
+  enviarDatos(producto:Producto)
   {
     this.producto=producto;
    

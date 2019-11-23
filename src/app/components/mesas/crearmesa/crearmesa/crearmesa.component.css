@@ -3,3 +3,19 @@
     text-align: center;
     
 }
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+.stock{
+    text-align: right;
+  }
+  input.stock::-webkit-outer-spin-button,
+  input.stock::-webkit-inner-spin-button
+  {
+      display: none;
+  }
+  form{
+      display: flex;
+      flex-direction: column;
+  }

@@ -11,7 +11,8 @@ import { CrearpedidoComponent } from './components/pedido/crearpedido/crearpedid
 import { ProductosComponent } from './components/productos/productos.component';
 import { BebidasComponent } from './components/productos/bebidas/bebidas.component';
 import { PlatosComponent } from './components/productos/platos/platos.component';
-import { UMedidadComponent } from './components/productos/umedidad/umedidad.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
+
 
 const appRoutes:Routes=[
     {path:'',redirectTo:'/login',pathMatch:'full'},
@@ -33,7 +34,8 @@ children:[
   {path:'productos',component:ProductosComponent,
   children:[{path:'bebidas',component:BebidasComponent},
             {path:'platos',component:PlatosComponent},
-            {path:'unidadMedida',component:UMedidadComponent}]}
+            ]},
+            {path:'reservas',component:ReservasComponent}
 ];
 export const appRoutingProviders:any[]=[];
 export const routing:ModuleWithProviders=RouterModule.forRoot(appRoutes);

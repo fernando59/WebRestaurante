@@ -31,7 +31,7 @@ import { BebidasComponent } from './components/productos/bebidas/bebidas.compone
 import { ProductosComponent } from './components/productos/productos.component';
 import { PlatosComponent } from './components/productos/platos/platos.component';
 
-import { UMedidadComponent } from './components/productos/umedidad/umedidad.component';
+
 import { TablabebidasComponent } from './components/productos/bebidas/tablabebidas/tablabebidas.component';
 import { BebidaService } from './services/bebida/bebida.service';
 import { CrearbebidaComponent } from './components/productos/bebidas/crearbebida/crearbebida.component';
@@ -42,6 +42,12 @@ import { CrearplatoComponent } from './components/productos/platos/crearplato/cr
 import { EditarplatoComponent } from './components/productos/platos/editarplato/editarplato.component';
 import { TablamenuComponent } from './components/pedido/tablamenu/tablamenu.component';
 import { FormpedidoComponent } from './components/pedido/formpedido/formpedido.component';
+import { CrearumedidaComponent } from './components/productos/umedida/crearumedida/crearumedida.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
+import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
+import { ModalClienteComponent } from './components/personas/modal-cliente/modal-cliente.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material';
 
 
 @NgModule({
@@ -67,7 +73,6 @@ import { FormpedidoComponent } from './components/pedido/formpedido/formpedido.c
     BebidasComponent,
     ProductosComponent,
     PlatosComponent,
-    UMedidadComponent,
     TablabebidasComponent,
     CrearbebidaComponent,
     EditarbebidasComponent,
@@ -76,7 +81,12 @@ import { FormpedidoComponent } from './components/pedido/formpedido/formpedido.c
     EditarplatoComponent,
     CrearplatoComponent,
     TablamenuComponent,
-    FormpedidoComponent
+    FormpedidoComponent,
+    CrearumedidaComponent,
+    ReservasComponent,
+    CrearReservaComponent,
+    ModalClienteComponent,
+ 
     
   ],
   imports: [
@@ -86,7 +96,9 @@ import { FormpedidoComponent } from './components/pedido/formpedido/formpedido.c
     MaterialModule,
     routing,
     HttpClientModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,
+    NgxMaterialTimepickerModule,
+    MatNativeDateModule
   
     
   ],
@@ -98,6 +110,12 @@ import { FormpedidoComponent } from './components/pedido/formpedido/formpedido.c
                   ModalmesaComponent,
                   EditarpersonaComponent,
                   CrearUsuarioComponent,
-                CrearbebidaComponent,EditarbebidasComponent,DialogComponent,CrearplatoComponent,EditarplatoComponent]
+                CrearbebidaComponent,
+                EditarbebidasComponent,
+                DialogComponent,
+                CrearplatoComponent,
+                EditarplatoComponent,
+              CrearumedidaComponent,
+            ModalClienteComponent]
 })
 export class AppModule { }
