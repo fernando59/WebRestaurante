@@ -27,22 +27,35 @@
             <mat-form-field>
                     <input
                     required
+                    (input)="onSearchChange($event.target.value)"
                     formControlName="numero_personas"
                     class="stock" type="number" matInput placeholder="Cantidad de personas">
              <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.required">Campo obligatorio</mat-error>
                     <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.min">Número mayor a cero</mat-error>
+                    <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.max">Número menor a diez</mat-error>
             </mat-form-field>  
             
             <mat-form-field>
                     <mat-label>Mesas</mat-label>
-                    <mat-select name="select" #select   multiple>
-                      <mat-option
+                    <mat-select name="select" #select [(value)]="selected"  multiple>
+                      <mat-option (onSelectionChange)="change($event,mesa.capacidad)"
+                      [disabled]="disable"
+                      *ngFor="let mesa of listamesas" [value]="mesa.codigo" >
+                          <div class="listamesas" >
+                              <span>
+                                {{mesa.nombre}}
+                              </span>
+                              <span>
+                                {{mesa.capacidad}}
+
+                              </span>
+                          </div>
+                          
                     
-                      *ngFor="let mesa of listamesas" [value]="mesa.codigo">
-                        Nombre  
-                        {{mesa.nombre}}
-                        Capacidad
-                          {{mesa.capacidad}}
+                          
+                     
+                     
+                          
                         </mat-option>
                     </mat-select>
                   </mat-form-field>

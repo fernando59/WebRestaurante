@@ -1,0 +1,7 @@
+{
+    "/Api_Restaurante/api/*":{
+        "target":"http://restauranteangular.epizy.com",
+        "secure":false,
+        "changeOrigin":true
+    }
+}

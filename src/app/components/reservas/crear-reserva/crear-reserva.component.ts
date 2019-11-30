@@ -4,7 +4,9 @@ import { ReservaService } from 'src/app/services/reserva/reserva.service';
 import { MatDialogConfig, MatDialog, DateAdapter, MAT_DATE_FORMATS, MatSnackBar } from '@angular/material';
 import { ModalClienteComponent } from '../../personas/modal-cliente/modal-cliente.component';
 import { AppDateAdapter, APP_DATE_FORMATS } from './picker';
-
+import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 @Component({
   selector: 'app-crear-reserva',
   templateUrl: './crear-reserva.component.html',
@@ -15,7 +17,11 @@ import { AppDateAdapter, APP_DATE_FORMATS } from './picker';
   ]
 })
 export class CrearReservaComponent implements OnInit {
-
+mesa:any;
+selected:[];
+suma:number=0;
+verificar:number=0;
+disable:boolean=false;
   constructor(
     private _serviceMesa:MesaService,
     public _serviceReserva:ReservaService,
@@ -23,22 +29,15 @@ export class CrearReservaComponent implements OnInit {
     private snackbar:MatSnackBar
     
   ) { }
-    date:Date=new Date();
-    settings={
-      bigBanner:true,
-      timePicker:true,
-      format:'dd-MM-yyyy hh:mm a',
-      defaultOpen:false,
-      closeOnSelect:false
-    }
-
   listamesas:any;
   ngOnInit() {
     this._serviceMesa.getMesas().subscribe(res=>{
-      this.listamesas=res.data;
+      this.mesa=res.data;
+      this.listamesas=this.mesa.filter(item=>item.estado=='A')
       console.log(this.listamesas)
     })
   }
+
   onOpen()
   {
     const dialog=new MatDialogConfig();
@@ -48,23 +47,70 @@ export class CrearReservaComponent implements OnInit {
     dialog.disableClose=true;
     this.dialog.open(ModalClienteComponent,dialog).afterClosed().subscribe(res=>{
       this._serviceReserva.form.controls['nombre_cliente'].setValue(res.nombre);
-      this._serviceReserva.form.controls['id_cliente'].setValue(res.codigo);
+      this._serviceReserva.form.controls['id_cliente'].setValue(parseInt(res.codigo));
       console.log(res.nombre)
     });
     return false;
   }
-  onSubmit(form,select:HTMLInputElement){
-    form.value.fecha=form.value.fecha.toString();
-    this.snackbar.open('Creado exitosamente','',{
-      duration:3000,
-      verticalPosition:'top'
-
-  })
+  onSubmit(form:NgForm){
+    const momentDate = new Date(form.value.fecha.toString()); // Replace event.value with your date value
+    const formattedDate = moment(momentDate).format("YYYY/MM/DD");
+    form.value.fecha=formattedDate;
+    console.log(form.value.fecha);
     this._serviceReserva.insertReserva(form.value).subscribe(res=>{
-      console.log('Aceptado')
-    })
-    console.log(form.value)
-    console.log(select.value)
+      this.selected.map(ress=>{
+      this._serviceReserva.obtenerUltimoId().subscribe(resss=>{
+        let ultimo=resss.data;
+           ultimo.map(ultimo=>{
+       
+         let enviar={id_reserva:ultimo.codigo,id_mesa:ress};
+           this._serviceReserva.detalleReserva(enviar).subscribe(s=>{
 
+           },
+           error=>{
+             console.log(error)
+           });
+      })
+        })
+
+        this.snackbar.open('Creado exitosamente','Hecho',{
+          duration:3000,
+          verticalPosition:'top'
+    
+      })
+      },error=>{
+        console.log(error)
+      })
+    })
+  
   }
+  change(event,suma)
+  {
+    if(event.isUserInput) {
+      console.log(event.source.value);
+      if(event.source.selected)
+      {
+        this.suma=this.suma+parseInt(suma);
+        console.log(this.verificar)
+        if(this.verificar>=this.suma){
+          this.disable=false;
+        }else{
+          this.disable=true;
+        }
+      }
+      else
+         {
+          this.suma=this.suma-parseInt(suma);
+         }
+      
+    
+
+    }
+  }
+  onSearchChange(searchValue: string): void {  
+    this.verificar=parseInt(searchValue);
+    console.log(searchValue);
+  }
+
+
 }

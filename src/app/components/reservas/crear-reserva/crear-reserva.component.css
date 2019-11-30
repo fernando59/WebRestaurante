@@ -22,3 +22,7 @@ form{
     font-size: 1.1em;
     color:#fff;
 }
+.listamesas{
+    display: flex;
+    justify-content: space-around;
+}

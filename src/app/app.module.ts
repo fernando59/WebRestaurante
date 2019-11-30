@@ -48,6 +48,9 @@ import { CrearReservaComponent } from './components/reservas/crear-reserva/crear
 import { ModalClienteComponent } from './components/personas/modal-cliente/modal-cliente.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material';
+import { ListareservasComponent } from './components/reservas/listareservas/listareservas.component';
+import { ReservaChildComponent } from './components/reservas/reserva-child/reserva-child.component';
+import { TablareservaComponent } from './components/reservas/listareservas/tablareserva/tablareserva.component';
 
 
 @NgModule({
@@ -86,6 +89,9 @@ import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material';
     ReservasComponent,
     CrearReservaComponent,
     ModalClienteComponent,
+    ReservaChildComponent,
+    ListareservasComponent,
+    TablareservaComponent
  
     
   ],

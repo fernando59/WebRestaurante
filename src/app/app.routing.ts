@@ -12,6 +12,8 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { BebidasComponent } from './components/productos/bebidas/bebidas.component';
 import { PlatosComponent } from './components/productos/platos/platos.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
+import { ReservaChildComponent } from './components/reservas/reserva-child/reserva-child.component';
+import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 
 
 const appRoutes:Routes=[
@@ -35,7 +37,9 @@ children:[
   children:[{path:'bebidas',component:BebidasComponent},
             {path:'platos',component:PlatosComponent},
             ]},
-            {path:'reservas',component:ReservasComponent}
+    {path:'reservas',component:ReservasComponent,
+children:[{path:'crearReserva',component:CrearReservaComponent},
+            {path:'listarReserva',component:ReservaChildComponent}]}
 ];
 export const appRoutingProviders:any[]=[];
 export const routing:ModuleWithProviders=RouterModule.forRoot(appRoutes);

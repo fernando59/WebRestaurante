@@ -1,0 +1,98 @@
+<h2>Listado de reservas</h2>
+<form (submit)="onFilter(form)" #form="ngForm">
+    <mat-form-field>
+        <input
+       
+        type="text"
+     
+        name="fecha" ngModel #fecha="ngModel"
+        matInput [matDatepicker]="picker" placeholder="Filtrar por fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    
+    
+      </mat-form-field>
+
+    <button type="submit"  mat-raised-button  >Buscar</button>
+</form>
+<!--  <mat-form-field>
+    <input matInput placeholder="Buscar"  [(ngModel)]="buscar" autocomplete="off" (keyup)="filtrar()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClear()"> 
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  -->
+  <mat-table [dataSource]="listaReservas"  matSort class="tabla">
+    <!-- Position Column -->
+    <ng-container matColumnDef="codigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+     
+      <mat-cell *matCellDef="let bebida">{{bebida.codigo}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="fecha">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha </mat-header-cell>
+      <mat-header-cell *matCellDef="let bebida"> {{bebida.fecha}} </mat-header-cell>
+    </ng-container>
+  
+    <!--APelldio         -->
+    <ng-container matColumnDef="hora">
+            <mat-header-cell *matHeaderCellDef>Hora </mat-header-cell>
+            <mat-header-cell *matCellDef="let bebida"> {{bebida.hora}} </mat-header-cell>
+          </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef>Cliente </mat-header-cell>
+      <mat-header-cell *matCellDef="let bebida"> {{bebida.nombre}} </mat-header-cell>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="estado">
+      <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+      <mat-header-cell *matCellDef="let bebida"> {{bebida.estado}} </mat-header-cell>
+    </ng-container>
+
+
+
+          <ng-container matColumnDef="numero_personas">
+                <mat-header-cell *matHeaderCellDef>Número de personas</mat-header-cell>
+                <div matColumnDef="id_unidad_medida"></div>
+                <mat-header-cell *matCellDef="let bebida"> {{bebida.numero_personas}} </mat-header-cell>
+              </ng-container>
+    <!-- Opciones-->
+    <ng-container matColumnDef="Opciones">
+            <mat-header-cell *matHeaderCellDef>
+
+            </mat-header-cell>
+        <mat-cell *matCellDef="let row,let mesa" >
+          <div >
+              <button mat-icon-button (click)="onEdit(row)">
+                  Detalles
+      </button>
+    
+          </div>
+     
+           
+        </mat-cell>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="loading">
+      <mat-footer-cell *matFooterCellDef colspan="8">
+        Cargando   
+        <div class="cargando"></div>
+      </mat-footer-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+<!-------------------------------------Carga--------------------------->
+
+
+    <mat-footer-row  *matFooterRowDef="['loading']" [ngClass]="{'hide':listaReservas!=null}"></mat-footer-row>
+  </mat-table>
+  <!-------------------------------------Paginacion --------------------------->
+
+  <mat-paginator [pageSizeOptions]="[5,10]" showFirtsLastButtons [pageSize]="5"></mat-paginator>
+
