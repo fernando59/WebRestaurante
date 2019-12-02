@@ -39,7 +39,7 @@
                     <mat-label>Mesas</mat-label>
                     <mat-select name="select" #select [(value)]="selected"  multiple>
                       <mat-option (onSelectionChange)="change($event,mesa.capacidad)"
-                      [disabled]="disable"
+                      [disabled]="mesa.capacidad <=suma && mesa.codigo===valor"
                       *ngFor="let mesa of listamesas" [value]="mesa.codigo" >
                           <div class="listamesas" >
                               <span>

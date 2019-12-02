@@ -51,6 +51,8 @@ import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material';
 import { ListareservasComponent } from './components/reservas/listareservas/listareservas.component';
 import { ReservaChildComponent } from './components/reservas/reserva-child/reserva-child.component';
 import { TablareservaComponent } from './components/reservas/listareservas/tablareserva/tablareserva.component';
+import { DetallereservaComponent } from './components/reservas/detallereserva/detallereserva.component';
+import { NotificacionComponent } from './components/notificacion/notificacion.component';
 
 
 @NgModule({
@@ -91,7 +93,9 @@ import { TablareservaComponent } from './components/reservas/listareservas/tabla
     ModalClienteComponent,
     ReservaChildComponent,
     ListareservasComponent,
-    TablareservaComponent
+    TablareservaComponent,
+    DetallereservaComponent,
+    NotificacionComponent
  
     
   ],
@@ -122,6 +126,6 @@ import { TablareservaComponent } from './components/reservas/listareservas/tabla
                 CrearplatoComponent,
                 EditarplatoComponent,
               CrearumedidaComponent,
-            ModalClienteComponent]
+            ModalClienteComponent,DetallereservaComponent]
 })
 export class AppModule { }

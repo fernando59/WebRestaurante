@@ -1,0 +1,58 @@
+
+
+<mat-card class="example-card">
+    <div class="form-header"> 
+        <h2>Detalle Reserva</h2>
+        <button mat-button color="warn" (click)="onClose()">
+           X
+          </button>
+    </div>
+  
+  
+    <form (submit)="onSubmit(form)" #form="ngForm">
+     
+      <input type="hidden"  name="codigo" ngModel>
+        <mat-grid-list cols="2" rowHeight="1:1">
+            <mat-grid-tile>
+                <mat-card-content>
+                    <mat-card-title>Fecha</mat-card-title>
+                    <div>{{detalle.codigo}}</div>
+                    <mat-card-subtitle>{{detalle.fecha}}</mat-card-subtitle>
+                    <mat-card-title>Hora</mat-card-title>
+                    <mat-card-subtitle>{{detalle.hora}}</mat-card-subtitle>
+                    <mat-card-title>Cantidad de mesas</mat-card-title>
+                    <mat-card-subtitle>{{detalle.mesas}}</mat-card-subtitle>
+                    <mat-card-title>Estado</mat-card-title>
+                    <mat-card-subtitle>{{detalle.estado}}</mat-card-subtitle>
+                   
+                  </mat-card-content>
+              
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-card-content>
+                      <mat-card-title>Cliente</mat-card-title>
+                      <mat-card-subtitle>{{detalle.nombre}}</mat-card-subtitle>
+                      <mat-card-title>Apellido</mat-card-title>
+                      <mat-card-subtitle>{{detalle.apellido}}</mat-card-subtitle>
+                      <mat-card-title>Telefono</mat-card-title>
+                      <mat-card-subtitle>{{detalle.telefono}}</mat-card-subtitle>
+                      <mat-form-field>
+                          
+                          <mat-select name="estado" ngModel  >
+                            <mat-option value="CANCELADO">Cancelado</mat-option>
+                            <mat-option value="FINALIZADO">Finalizado</mat-option>
+                        
+  
+                          </mat-select>
+                        </mat-form-field>
+                        <button type="submit"  mat-raised-button class="button">Guardar</button>
+                    </mat-card-content>
+                
+                </mat-grid-tile>
+               
+          </mat-grid-list>
+
+    </form>
+
+</mat-card>
+

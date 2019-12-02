@@ -44,4 +44,13 @@ export class ReservaService {
   {
     return this.http.get(this.url+'reservas/filtrar.php?s='+fecha);
   }
+  obtenerUno(codigo):Observable<any>
+{
+  return this.http.get(this.url+'reservas/uno.php?id='+codigo);
+}
+  editarEstadoReserva(reserva:Reserva)
+{
+ 
+  return this.http.put(this.url+'reservas/editarestado.php',reserva);
+}
 }
