@@ -19,6 +19,7 @@ import 'moment/locale/pt-br';
 export class CrearReservaComponent implements OnInit {
 mesa:any;
 selected:[];
+valor:number=0;
 suma:number=0;
 verificar:number=0;
 disable:boolean=false;
@@ -34,7 +35,7 @@ disable:boolean=false;
     
     this._serviceMesa.getMesas().subscribe(res=>{
       this.mesa=res.data;
-      this.listamesas=this.mesa.filter(item=>item.estado=='A')
+      this.listamesas=this.mesa;//.filter(item=>item.estado=='A')
       console.log(this.listamesas)
     })
   }
@@ -89,6 +90,7 @@ disable:boolean=false;
   {
     if(event.isUserInput) {
       console.log(event.source.value);
+      this.valor=event.source.value;
       if(event.source.selected)
       {
         this.suma=this.suma+parseInt(suma);

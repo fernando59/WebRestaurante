@@ -26,4 +26,8 @@ mat-footer-row mat-footer-cell{
     h2{
         text-align: center;
     }
-    
+    .div{
+        display: flex;
+        justify-content: space-around;
+        padding: 5px;
+    }
