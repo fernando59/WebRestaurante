@@ -1,8 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatSnackBar, MatDialogConfig } from '@angular/material';
 import { MesaService } from 'src/app/services/mesa/mesa.service';
 import { PersonaService } from 'src/app/services/persona/persona.service';
 import { Router } from '@angular/router';
+import { ModalClienteComponent } from '../../personas/modal-cliente/modal-cliente.component';
+import { ReservaService } from 'src/app/services/reserva/reserva.service';
+import { PedidoService } from 'src/app/services/pedido/pedido.service';
 
 @Component({
   selector: 'app-modalmesa',
@@ -16,7 +19,11 @@ export class ModalmesaComponent implements OnInit {
     public _serviceMesa:MesaService,
     @Inject (MAT_DIALOG_DATA) public data:any,
     private _servicePersona:PersonaService,
-    private router:Router
+    private router:Router,
+    private dialog:MatDialog,
+    private snackbar:MatSnackBar,
+    public _serviceReserva:ReservaService,
+   public _servicePedido:PedidoService
   ) { }
 
     //dropdown
@@ -33,12 +40,32 @@ export class ModalmesaComponent implements OnInit {
   }
   onOpen()
   {
-    this.router.navigate(['./pedidos/crear']);
+  
+    this.router.navigateByUrl('pedidos/crear');
     this.dialobox.close();
+  }
+  onOpenn()
+  {
+    const dialog=new MatDialogConfig();
+    dialog.autoFocus=true;
+    dialog.height='560px';
+    dialog.width='900px';
+    dialog.disableClose=true;
+    this.dialog.open(ModalClienteComponent,dialog).afterClosed().subscribe(res=>{
+      this._serviceReserva.form.controls['nombre_cliente'].setValue(res.nombre);
+      this._serviceReserva.form.controls['id_cliente'].setValue(parseInt(res.codigo));
+
+      console.log(res.nombre)
+    });
+    return false;
   }
   onSubmit(form)
   {
     
+    this._serviceReserva.form.controls['observaciones'].setValue(form.value.observaciones);
+    this._servicePedido.form.controls['id_mesero'].setValue(parseInt( form.value.id_mesero));
+    this.router.navigateByUrl('pedidos/crear');
+    this.dialobox.close();
   }
   drowdownRefresh()
   {

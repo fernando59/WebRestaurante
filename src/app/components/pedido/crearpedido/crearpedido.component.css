@@ -9,8 +9,12 @@
 }
 .categorys button{
     padding: 10px;
-    background: red;
+    background: green;
     margin: 5px;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    outline: none;
 }
 .menu{
     width: 40%;

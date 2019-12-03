@@ -1,25 +1,39 @@
-<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off"   >
+<form #form="ngForm" (submit)="onSubmit(form)" [formGroup]="_serviceReserva.form" autocomplete="off"   >
         <div class="costo">
             <span>{{suma}}</span>
         </div>
         <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Fecha">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
+                <input
+                required
+                (input)="onSearchChange($event.target.value)"
+                formControlName="numero_personas"
+                class="stock" type="number" matInput placeholder="Cantidad de personas">
+         <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.required">Campo obligatorio</mat-error>
+                <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.min">Número mayor a cero</mat-error>
+                <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.max">Número menor a diez</mat-error>
+        </mat-form-field>  
+        
         <mat-form-field>
-                <input matInput
+                <mat-label>Mesas</mat-label>
+                <mat-select name="select" #select [(value)]="selected"  multiple>
+                  <mat-option (onSelectionChange)="change($event,mesa.capacidad)"
+                  [disabled]="disable"
+                  *ngFor="let mesa of listamesas" [value]="mesa.codigo" >
+                      <div class="listamesas" >
+                          <span>
+                            {{mesa.nombre}}
+                          </span>
+                          <span>
+                            {{mesa.capacidad}}
 
-                placeholder="Detalle">
-                
+                          </span>
+                      </div>
+                    </mat-option>
+                </mat-select>
               </mat-form-field>
-
+              
+              <button type="submit"  [disabled]="form.invalid" mat-raised-button class="button" >Reservar</button>
 </form>
 
 
-<div *ngFor="let p of producto">
-       
-                {{p.nombre}}
-        
-</div>
 

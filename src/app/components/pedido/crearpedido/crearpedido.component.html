@@ -1,6 +1,6 @@
 <div class="container">
     <div class="categorys">
-        <button (click)="onDrop('categoria')" >Fideos</button>
+        <button (click)="onDrop('fideos')" >Fideos</button>
         <button (click)="onDrop('sushis')">Sushis</button>
         <button (click)="onDrop('gaseosas')">Gaseosas</button>
         <button (click)="onDrop('refrescos')">Refrescos</button>
@@ -11,6 +11,6 @@
         <app-tablamenu [categoria]="categoria" (producto)="enviarDatos($event)"></app-tablamenu>
     </div>
     <div class="caja">
-        <app-formpedido [producto]="producto"></app-formpedido>
+        <app-formpedido [producto]="producto" [resta]="resta"></app-formpedido>
     </div>
 </div>

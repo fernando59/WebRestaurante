@@ -12,31 +12,59 @@ export class TablamenuComponent implements OnInit, OnChanges {
   constructor(
     private _serviceProductos:BebidaService
   ) { }
-
+    bebida:any;
     @Input()  categoria:string;
     public bebidaslist:Producto;
      @Output() producto =new EventEmitter<Producto>();
+     @Output() resta=new EventEmitter<Producto>();
   ngOnInit() {
    
   
   }
   ngOnChanges(changes:SimpleChanges)
   {
-    if(this.categoria=='gaseosas')
+    if(this.categoria=='gaseosas' || this.categoria=='refrescos')
     {
       this.categoriaTable();
 
+    }else if(this.categoria=='sushis' || this.categoria=='fideos')
+    {
+      this.productosTable();
     }
   }
   categoriaTable()
   {
     this._serviceProductos.getBebida().subscribe(res=>{
-      this.bebidaslist=res.data;
-      console.log(this.bebidaslist)
+      this.bebida=res.data;
+      if(this.categoria=='refrescos')
+      {
+        this.bebidaslist=this.bebida.filter(resa=> resa.id_tipo_producto==1)
+      }else 
+      {
+        this.bebidaslist=this.bebida.filter(resa=> resa.id_tipo_producto==2)
+      }
+
+    })
+  }
+  productosTable()
+  {
+    this._serviceProductos.getPlato().subscribe(res=>{
+      this.bebida=res.data;
+       if(this.categoria=='fideos')
+       {
+         this.bebidaslist=this.bebida.filter(resa=> resa.id_tipo_producto==3)
+       }else if(this.categoria=='sushis')
+       {
+         this.bebidaslist=this.bebida.filter(resa=> resa.id_tipo_producto==5)
+       }
     })
   }
   onAdd(producto:Producto){
     this.producto.emit(producto);
+    console.log('e')
+  }
+  onRes(producto:Producto){
+    this.resta.emit(producto);
     console.log('e')
   }
 }

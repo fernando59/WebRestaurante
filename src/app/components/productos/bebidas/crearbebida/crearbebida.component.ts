@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 export class CrearbebidaComponent implements OnInit {
 
   constructor(
-    private _serviceBebida:BebidaService,
+    public _serviceBebida:BebidaService,
     private snackbar:MatSnackBar
   ) { }
     //variables

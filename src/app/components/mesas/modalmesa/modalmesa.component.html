@@ -1,4 +1,4 @@
-<form class="container-modalmesa" (submit)="onSubmit()">
+<form class="container-modalmesa" #form="ngForm" (submit)="onSubmit(form)" [formGroup]="_serviceReserva.form" autocomplete="off">
     <div class="icon-salir">
         <button (click)="onClose()">X</button>
     </div>
@@ -8,19 +8,23 @@
 <div class="row">
     <mat-form-field>
         <input matInput placeholder="Cliente">
-        <button mat-icon-button matSuffix>
+        <button mat-icon-button matSuffix (click)="onOpenn()">
             <mat-icon>search</mat-icon>
         </button>
     </mat-form-field>
 
     <mat-form-field>
-        <mat-select placeholder="Meseros">
+        <mat-select
+        formControlName="id_mesero"
+        placeholder="Meseros">
             <mat-option *ngFor="let dl of meserosItems" [value]="dl.codigo">{{dl.nombre}}</mat-option>
         </mat-select>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="Direccion"></textarea>
+        <textarea 
+        formControlName="observaciones"
+        matInput placeholder="Observaciones"></textarea>
     </mat-form-field>
 </div>
     
@@ -30,6 +34,7 @@
             Cancelar
         </button>
         <a class="button-abrir" (click)="onOpen()" >Abrir Mesa</a>
+        <button type="submit" >Abrir Mesa</button>
     </div>
 
 

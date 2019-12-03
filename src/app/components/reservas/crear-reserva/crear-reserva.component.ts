@@ -31,6 +31,7 @@ disable:boolean=false;
   ) { }
   listamesas:any;
   ngOnInit() {
+    
     this._serviceMesa.getMesas().subscribe(res=>{
       this.mesa=res.data;
       this.listamesas=this.mesa.filter(item=>item.estado=='A')

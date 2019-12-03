@@ -1,7 +1,4 @@
-.titulo-pedidos{
+h2{
     text-align: center;
-    padding: 6px;
-}
-.menu-pedidos a{
-    padding: 6px;
+    padding-bottom: 26px;
 }
