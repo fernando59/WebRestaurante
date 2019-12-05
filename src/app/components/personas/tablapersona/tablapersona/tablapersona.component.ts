@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { EditarpersonaComponent } from '../../editarpersona/editarpersona.component';
 import { Persona } from 'src/app/models/persona';
 import { CrearUsuarioComponent } from 'src/app/components/usuarios/crear-usuario/crear-usuario.component';
+import { FormulariopersonaComponent } from '../../formulariopersona/formulariopersona/formulariopersona.component';
 
 @Component({
   selector: 'app-tablapersona',
@@ -45,7 +46,16 @@ export class TablapersonaComponent implements OnInit {
     dialog.height='600px'
     this.dialog.open(EditarpersonaComponent,{data:persona });
   }
-  
+  onCreateS()
+  {
+    const dialog=new MatDialogConfig();
+    dialog.autoFocus=true;
+    dialog.height='600px'
+    this.dialog.open(FormulariopersonaComponent,dialog).afterClosed().subscribe(res=>
+      {
+        this.refrescarTabla()
+      });
+  }
    onCreate(id:number)
    {
      console.log(id)

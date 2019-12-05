@@ -1,3 +1,7 @@
+  
+  <button mat-button (click)="onCreateS()">
+      <mat-icon>add</mat-icon> Nuevo
+      </button>
   <mat-form-field>
     <input matInput placeholder="Buscar"  [(ngModel)]="buscar" autocomplete="off" (keyup)="filtrar()">
     <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClear()"> 

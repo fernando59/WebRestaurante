@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Global } from '../global';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Pedido } from 'src/app/models/pedido';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,13 @@ export class PedidoService {
   {
    
     return this.http.post(this.url+'pedidos/crear.php',pedido);
+  }
+  insertDetallePedido(detalle)
+  {
+    return this.http.post(this.url+'productos/crearDetalle.php',detalle)
+  }
+  obtenerUltimoId():Observable<any>
+  {
+    return this.http.get(this.url+'pedidos/ultimo.php');
   }
 }

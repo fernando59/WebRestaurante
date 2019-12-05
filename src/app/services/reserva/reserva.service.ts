@@ -24,7 +24,8 @@ export class ReservaService {
     observaciones:new FormControl('',Validators.required),
     id_cliente:new FormControl(0),
     nombre_cliente:new FormControl('',Validators.required),
-    id_mesero:new FormControl(0)
+    id_mesero:new FormControl(0),
+    id_mesas:new FormControl([0])
 
   })
   insertReserva(reserva:Reserva)

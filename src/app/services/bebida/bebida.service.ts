@@ -30,7 +30,7 @@ form:FormGroup=new FormGroup({
   descripcion:new FormControl('',[Validators.required,Validators.minLength(4)]),
   precio:new FormControl(0,[Validators.required,Validators.min(1)]),
   sw_stock:new FormControl(0,[Validators.required,Validators.min(1)]),
-  tipo_producto:new FormControl('B',),
+  tipo_producto:new FormControl('R',),
   unidad_de_medida:new FormControl(''),
   id_unidad_medida:new FormControl(0)
 
@@ -66,7 +66,7 @@ form2:FormGroup=new FormGroup({
   {
     return this.http.delete(this.url+'productos/eliminar.php?id='+id);
   }
-
+ 
   //----------------------------------------Platos----------------------------------------
   getPlato():Observable<any>
   {

@@ -14,6 +14,8 @@ import { PlatosComponent } from './components/productos/platos/platos.component'
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { ReservaChildComponent } from './components/reservas/reserva-child/reserva-child.component';
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
+import { ImprimirComponent } from './components/imprimir/imprimir.component'
+import { FacturaComponent } from './components/factura/factura.component'
 
 
 const appRoutes:Routes=[
@@ -26,7 +28,8 @@ const appRoutes:Routes=[
     {path:'mesas',component:MesasComponent},
     {path:'pedido',component:PedidoComponent},
      {path:'crear',component:CrearpedidoComponent},
-    {path:'nuevo',component:CrearpedidoComponent}
+    {path:'nuevo',component:CrearpedidoComponent},
+    {path:'factura',component:FacturaComponent}
     
 ]},
     {path:'usuarios',component:UsuariosComponent,

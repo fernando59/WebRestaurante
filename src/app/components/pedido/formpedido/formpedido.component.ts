@@ -17,6 +17,7 @@ export class FormpedidoComponent implements OnInit,OnChanges {
   sumas:number=0;
   verificar:number=0;
   disable:boolean=false;
+   enviar:any;
   constructor(
     public _serviceReserva:ReservaService,
     private _serviceMesa:MesaService,
@@ -30,12 +31,13 @@ export class FormpedidoComponent implements OnInit,OnChanges {
 
   listamesas:any;
   id_productos=[];
+  id_mesas=[]
   public suma:number=0;
   ngOnInit() {
     this._serviceMesa.getMesas().subscribe(res=>{
       this.mesa=res.data;
       this.listamesas=this.mesa.filter(item=>item.estado=='A')
-    
+      this.id_mesas.push(this._serviceReserva.form.controls['id_mesas'].value)
     
     })
     this.sumar();
@@ -46,6 +48,10 @@ export class FormpedidoComponent implements OnInit,OnChanges {
     this._serviceReserva.form.controls['hora'].setValue(formatDate(new Date(), 'h:mm:ss a', 'en'));
     this._serviceReserva.form.controls['estado'].setValue('PENDIENTE');
     this._serviceReserva.form.controls['tipo_reserva'].setValue('B');
+ 
+    this._serviceReserva.form.controls['id_mesas'].setValue(1);
+    this.id_mesas.push(this._serviceReserva.form.controls['id_mesas'].value)
+    console.log(this.id_mesas)
     this._servicePedido.form.controls['fecha'].setValue(formatDate(new Date(), 'yyyy/MM/dd', 'en'));
     console.log(this._serviceReserva.form.value)
     console.log(this._servicePedido.form.value)
@@ -100,23 +106,44 @@ export class FormpedidoComponent implements OnInit,OnChanges {
     }
     onSubmit(form){
       this._serviceReserva.insertReserva(this._serviceReserva.form.value).subscribe(res=>{
-
+       
               this._serviceReserva.obtenerUltimoId().subscribe(codigo=>{
                 let ultimo=codigo.data;
                 ultimo.map(ultimo=>{
+                  let enviar={id_reserva:ultimo.codigo,id_mesa:res};
+           this._serviceReserva.detalleReserva(enviar).subscribe(s=>{
+
+           },
+           error=>{
+             console.log(error)
+           });
                   this._servicePedido.form.controls['id_reserva'].setValue(parseInt( ultimo.codigo));
                 })
 
                 this._servicePedido.insertPedido(this._servicePedido.form.value).subscribe(ped=>{
+                  this.id_productos.map(res=>{
+                    this._servicePedido.obtenerUltimoId().subscribe(ultimo=>{
+                      
+                      let ultimos=ultimo.data
+                      ultimos.map(u=>{
+                        this.enviar={id_pedido:parseInt(u.codigo),id_producto:parseInt(res),cantidad:1,precio:0};
+                        console.log(this.enviar)
+                        this._servicePedido.insertDetallePedido(this.enviar).subscribe(res=>{
+                                console.log('hola')
+                        })
+                      })
+                      
+                    })
+                   
+                })
+                    
 
                   this.snackbar.open('Pedido registrado exitosamente','Aceptar',{
                     duration:5000,
                     verticalPosition:'top'
               
                 })
-                  this.id_productos.map(res=>{
-                              console.log('hola')
-                          })
+                
                 })
               })
             

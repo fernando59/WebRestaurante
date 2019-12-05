@@ -53,6 +53,8 @@ import { ReservaChildComponent } from './components/reservas/reserva-child/reser
 import { TablareservaComponent } from './components/reservas/listareservas/tablareserva/tablareserva.component';
 import { DetallereservaComponent } from './components/reservas/detallereserva/detallereserva.component';
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
+import { ImprimirComponent } from './components/imprimir/imprimir.component';
+import { FacturaComponent } from './components/factura/factura.component';
 
 
 @NgModule({
@@ -95,7 +97,9 @@ import { NotificacionComponent } from './components/notificacion/notificacion.co
     ListareservasComponent,
     TablareservaComponent,
     DetallereservaComponent,
-    NotificacionComponent
+    NotificacionComponent,
+    ImprimirComponent,
+    FacturaComponent
  
     
   ],
@@ -126,6 +130,6 @@ import { NotificacionComponent } from './components/notificacion/notificacion.co
                 CrearplatoComponent,
                 EditarplatoComponent,
               CrearumedidaComponent,
-            ModalClienteComponent,DetallereservaComponent]
+            ModalClienteComponent,DetallereservaComponent,ImprimirComponent]
 })
 export class AppModule { }

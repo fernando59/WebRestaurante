@@ -3,6 +3,7 @@ import { MesaService } from 'src/app/services/mesa/mesa.service';
 import { Mesa } from 'src/app/models/mesa';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ModalmesaComponent } from '../../mesas/modalmesa/modalmesa.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedido',
@@ -13,7 +14,8 @@ export class PedidoComponent implements OnInit {
 
   constructor(
     private _serviceMesa: MesaService,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private router:Router,
   ) { }
   public mesas: Mesa[]
   ngOnInit() {
@@ -33,6 +35,16 @@ export class PedidoComponent implements OnInit {
     dialog.autoFocus=true;
     dialog.width='50%';
     dialog.disableClose=true;
-    this.dialog.open(ModalmesaComponent,{data:mesa});
+    this.dialog.open(ModalmesaComponent,{data:mesa}).afterClosed().subscribe(res=>
+      {
+        if(res)
+        {
+          this.router.navigateByUrl('pedidos/crear');
+        }
+      });
+  }
+  abrirFactura()
+  {
+    this.router.navigateByUrl('pedidos/factura');
   }
 }

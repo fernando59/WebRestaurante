@@ -1,0 +1,39 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .td {
+    padding-right: 8px;
+  }
+  mat-card{
+      padding: 8px;
+      margin: 10px;
+  }
+  .ocultar{
+    display: none;
+  }
+
+
+  h1{
+    text-align: center;
+  }
+  .container{
+    width: 200px;
+    height: 500px;
+  }
+
+
+  .linea{
+    width: 90%;
+    height: 1px;
+    border-style: dashed;
+  }
+  .tr{
+    border-top: 1px dashed #000;
+  }

@@ -3,12 +3,16 @@
                 <mat-grid-tile *ngFor="let mesa of mesas">
                         <div >
                                 <mat-card [style.border]="mesa.estado=='A'?'4px solid green':'4px solid red'" class="card">
-                                    <div class="button-container">
+                                    <div *ngIf="mesa.estado=='A'"  class="button-container">
                                         <button class="button-a" (click)="abrirMesa(mesa)">Habilitar</button>
                                        <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
                                             <h3>{{mesa.nombre}}</h3>
                                     </div>    
-                                    
+                                    <div *ngIf="mesa.estado=='B'"  class="button-container">
+                                        <button class="button-a" (click)="abrirFactura()">Facturar</button>
+                                       <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
+                                            <h3>{{mesa.nombre}}</h3>
+                                    </div>    
                                     
                                     <h4>Espacio :{{mesa.capacidad}}</h4>
                                     <span>Fernando mercado saby</span>

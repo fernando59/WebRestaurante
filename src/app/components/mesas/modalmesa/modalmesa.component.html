@@ -7,7 +7,7 @@
     </div>
 <div class="row">
     <mat-form-field>
-        <input matInput placeholder="Cliente">
+        <input   formControlName="nombre_cliente" matInput placeholder="Cliente">
         <button mat-icon-button matSuffix (click)="onOpenn()">
             <mat-icon>search</mat-icon>
         </button>
@@ -33,8 +33,8 @@
         <button mat-button mat-dialog-close>
             Cancelar
         </button>
-        <a class="button-abrir" (click)="onOpen()" >Abrir Mesa</a>
-        <button type="submit" >Abrir Mesa</button>
+        <!--  <a class="button-abrir" (click)="onOpen()" >Abrir Mesa</a>    -->  
+        <button class="button-abrir" type="submit" >Abrir Mesa</button>
     </div>
 
 

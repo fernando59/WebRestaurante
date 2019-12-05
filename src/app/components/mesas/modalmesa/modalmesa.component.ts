@@ -61,11 +61,13 @@ export class ModalmesaComponent implements OnInit {
   }
   onSubmit(form)
   {
-    
+    let salir=true;
+    console.log(this._serviceMesa.mesaList.codigo)
     this._serviceReserva.form.controls['observaciones'].setValue(form.value.observaciones);
     this._servicePedido.form.controls['id_mesero'].setValue(parseInt( form.value.id_mesero));
-    this.router.navigateByUrl('pedidos/crear');
-    this.dialobox.close();
+    this._serviceReserva.form.controls['id_mesas'].setValue( this._serviceMesa.mesaList.codigo);
+    console.log(this._serviceReserva.form.value)
+    this.dialobox.close(salir);
   }
   drowdownRefresh()
   {
