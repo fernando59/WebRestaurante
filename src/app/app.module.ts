@@ -55,6 +55,7 @@ import { DetallereservaComponent } from './components/reservas/detallereserva/de
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { ImprimirComponent } from './components/imprimir/imprimir.component';
 import { FacturaComponent } from './components/factura/factura.component';
+import { TablaComponent } from './components/pedido/tabla/tabla.component';
 
 
 @NgModule({
@@ -99,7 +100,8 @@ import { FacturaComponent } from './components/factura/factura.component';
     DetallereservaComponent,
     NotificacionComponent,
     ImprimirComponent,
-    FacturaComponent
+    FacturaComponent,
+    TablaComponent
  
     
   ],

@@ -16,6 +16,7 @@ import { ReservaChildComponent } from './components/reservas/reserva-child/reser
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { ImprimirComponent } from './components/imprimir/imprimir.component'
 import { FacturaComponent } from './components/factura/factura.component'
+import { TablaComponent } from './components/pedido/tabla/tabla.component';
 
 
 const appRoutes:Routes=[
@@ -29,7 +30,8 @@ const appRoutes:Routes=[
     {path:'pedido',component:PedidoComponent},
      {path:'crear',component:CrearpedidoComponent},
     {path:'nuevo',component:CrearpedidoComponent},
-    {path:'factura',component:FacturaComponent}
+    {path:'factura/:codigo',component:FacturaComponent},
+    {path:'tabla',component:TablaComponent}
     
 ]},
     {path:'usuarios',component:UsuariosComponent,

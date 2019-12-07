@@ -17,7 +17,7 @@ export class ReservaService {
   form:FormGroup=new FormGroup({
     codigo:new FormControl(0),
     fecha:new FormControl('',Validators.required),
-    estado:new FormControl('SOLICITADO'),
+    estado:new FormControl('PENDIENTE'),
     tipo_reserva:new FormControl('A'),
     hora:new FormControl(0),
     numero_personas:new FormControl(0,[Validators.required,Validators.min(1),Validators.max(10)]),

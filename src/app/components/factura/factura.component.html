@@ -1,6 +1,6 @@
 <h2>Factura Pedido</h2>
 
-<mat-card>
+<mat-card *ngFor="let todo of todos">
         <table class="example-full-width" cellspacing="0"><tr>
                 <td><mat-form-field class="example-full-width">
                   <input readonly matInput placeholder="Factura N°" value="12">
@@ -36,7 +36,8 @@
 <mat-card>
         <table class="example-full-width" cellspacing="0"><tr>
                 <td><mat-form-field class="example-full-width">
-                        <input readonly matInput placeholder="Carnet" value="8197383SC">
+                        <input readonly matInput placeholder="Carnet" value="ss">
+                        <span>{{todo.nombre}}</span>
                       </mat-form-field></td>
                 <td><mat-form-field class="example-full-width">
                   <input readonly matInput placeholder="Cliente°" value="Fernando">

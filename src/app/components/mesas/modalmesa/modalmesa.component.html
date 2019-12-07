@@ -1,6 +1,6 @@
 <form class="container-modalmesa" #form="ngForm" (submit)="onSubmit(form)" [formGroup]="_serviceReserva.form" autocomplete="off">
     <div class="icon-salir">
-        <button (click)="onClose()">X</button>
+        <button mat-dialog-close >X</button>
     </div>
     <div class="header-mesa">
         <h2>{{this._serviceMesa.mesaList.nombre}}</h2>

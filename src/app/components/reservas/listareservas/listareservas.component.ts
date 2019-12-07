@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import 'moment/locale/pt-br';
 import { MatTableDataSource, MatSnackBar, MatDialogConfig, MatDialog, MatSort, MatPaginator } from '@angular/material';
 import { DetallereservaComponent } from '../detallereserva/detallereserva.component';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-listareservas',
   templateUrl: './listareservas.component.html',
@@ -46,7 +47,20 @@ export class ListareservasComponent implements OnInit {
     } )  
   }
   ngOnInit() {
-  
+    this._serviceReserva.filtrarFecha(formatDate(new Date(), 'yyyy/MM/dd', 'en')).subscribe(res=>{
+      this.listaReservas=new MatTableDataSource(res.data);
+      this.listaReservas.sort=this.sort;
+      this.listaReservas.paginator=this.paginator;
+      this.changeDetectorRefs.detectChanges();
+ 
+    },error=>{
+      this.snackbar.open('No se encotro resultados','Aceptar',{
+        duration:3000,
+        verticalPosition:'top'
+    })
+   
+    } )  
+    
   }
   onOpen(codigo)
   {

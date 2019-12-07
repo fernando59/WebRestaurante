@@ -1,21 +1,24 @@
 
-        <mat-grid-list cols="4" rowHeight="200px">
+        <mat-grid-list cols="4" rowHeight="270px">
                 <mat-grid-tile *ngFor="let mesa of mesas">
                         <div >
-                                <mat-card [style.border]="mesa.estado=='A'?'4px solid green':'4px solid red'" class="card">
+                                <mat-card  class="card">
+                                    <div [style.background]="mesa.estado=='A'?'00CF84':'#C30000'" class="title">
+                                            <h3>{{mesa.nombre}}</h3>
+                                    </div>
                                     <div *ngIf="mesa.estado=='A'"  class="button-container">
                                         <button class="button-a" (click)="abrirMesa(mesa)">Habilitar</button>
                                        <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
-                                            <h3>{{mesa.nombre}}</h3>
+                                         
                                     </div>    
                                     <div *ngIf="mesa.estado=='B'"  class="button-container">
-                                        <button class="button-a" (click)="abrirFactura()">Facturar</button>
+                                        <button class="button-a" (click)="abrirFactura(mesa.codigo)">Facturar</button>
                                        <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
-                                            <h3>{{mesa.nombre}}</h3>
+                                            
                                     </div>    
                                     
-                                    <h4>Espacio :{{mesa.capacidad}}</h4>
-                                    <span>Fernando mercado saby</span>
+                                 
+                                    <span class="name">Fernando mercado saby</span>
                                     <div>
                                         <span>Total</span>
                                         <span>300</span>

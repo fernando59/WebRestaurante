@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as jsPDF from 'jspdf';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ImprimirComponent } from '../imprimir/imprimir.component';
+import { PedidoService } from 'src/app/services/pedido/pedido.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { FacturaService } from 'src/app/services/factura/factura.service';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
@@ -11,11 +15,35 @@ export class FacturaComponent implements OnInit {
 
   @ViewChild('imprimir', {static: false}) imprimir:ElementRef
   constructor(
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    public _servicePedido: PedidoService,
+    private rutaActiva: ActivatedRoute,
+    public _serviceFactura:FacturaService
   ) { }
   mensaje ='fdfdsafdsafa'
   aa=['fdasfds','fdsafdsaf','fdasfsa']
+  todos:{};
+  //todo:any;
   ngOnInit() {
+    this.obtenerTodo(this.rutaActiva.snapshot.params.codigo);
+  }
+  obtenerTodo(num)
+  {
+    this._servicePedido.obtenerTodo2(num).subscribe(res=>
+      {
+        this.todos=res.data
+        //this.todos.map(todoa=>
+         // this.todo=todoa
+         // this._serviceFactura.form.controls['fecha'].setValue(formatDate(new Date(), 'yyyy/MM/dd', 'en'))
+          //this._serviceFactura.form.controls['id_pedido'].setValue(todoa.id_pedido)
+       // )
+       //* console.log(this.todo)
+        console.log(this._serviceFactura.form.value)
+      })
+  }
+  insertarFactura()
+  {
+
   }
   Imprimir(e)
   {

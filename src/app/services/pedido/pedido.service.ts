@@ -36,4 +36,12 @@ export class PedidoService {
   {
     return this.http.get(this.url+'pedidos/ultimo.php');
   }
+  obtenerTodo():Observable<any>
+  {
+    return this.http.get(this.url+'pedidos/mostrarTodo.php');
+  }
+  obtenerTodo2(mesa):Observable<any>
+  {
+    return this.http.get(this.url+'pedidos/mostrarTodo2.php?s='+mesa);
+  }
 }

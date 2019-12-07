@@ -36,7 +36,8 @@ export class ModalmesaComponent implements OnInit {
   }
   onClose()
   {
-    this.dialobox.close();
+    let enviar=false;
+    this.dialobox.close(enviar);
   }
   onOpen()
   {
@@ -65,7 +66,7 @@ export class ModalmesaComponent implements OnInit {
     console.log(this._serviceMesa.mesaList.codigo)
     this._serviceReserva.form.controls['observaciones'].setValue(form.value.observaciones);
     this._servicePedido.form.controls['id_mesero'].setValue(parseInt( form.value.id_mesero));
-    this._serviceReserva.form.controls['id_mesas'].setValue( this._serviceMesa.mesaList.codigo);
+    this._serviceReserva.form.controls['id_mesas'].setValue(parseInt( this._serviceMesa.mesaList.codigo.toString()));
     console.log(this._serviceReserva.form.value)
     this.dialobox.close(salir);
   }
