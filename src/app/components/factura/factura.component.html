@@ -1,68 +1,97 @@
 <h2>Factura Pedido</h2>
+<form (submit)="onSubmit(form)"  #form="ngForm">
 
-<mat-card *ngFor="let todo of todos">
-        <table class="example-full-width" cellspacing="0"><tr>
-                <td><mat-form-field class="example-full-width">
-                  <input readonly matInput placeholder="Factura N°" value="12">
-                </mat-form-field></td>
-                <td class="td">  <mat-form-field class="example-full-width">
-                        <input
-                       
-                        type="text"
-                        matInput [matDatepicker]="picker" placeholder="Fecha">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
+                <mat-card *ngFor="let todo of todos">
+                                <table class="example-full-width" cellspacing="0"><tr>
+                                        <td><mat-form-field class="example-full-width">
+                                          <input readonly matInput placeholder="Factura N°" value="12">
+                                        </mat-form-field></td>
+                                        <td class="td">  <mat-form-field class="example-full-width">
+                                                <input
+                                               value="{{todo.fecha}}"
+                                                type="text"
+                                                matInput [matDatepicker]="picker" placeholder="Fecha">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                        
+                                              </mat-form-field></td>
+                                              <td class="td">
+                                                    <mat-form-field class="example-full-width">
+                                                            <mat-label>Metodo de pago</mat-label>
+                                                            <mat-select name="metodo_pago" ngModel>
+                                                              <mat-option  [value]="1">
+                                                               Tarjeta
+                                                              </mat-option>
+                                                              <mat-option  [value]="2">
+                                                                    Efectivo
+                                                                   </mat-option>
+                                                            </mat-select>
+                                                          </mat-form-field>
+                                              </td>
+                                              <td class="td">
+                                                    <mat-checkbox (change)="Imprimir($event)">Exportar PDF</mat-checkbox>
+                                              </td>
+                                      </tr></table>
+                        </mat-card>
+                        
+                        <mat-card>
+                                <table class="example-full-width" cellspacing="0"><tr>
+                                        <td><mat-form-field class="example-full-width">
+                                                <input readonly matInput placeholder="Carnet" value="{{todo.carnet}}">
+                                           
+                                              </mat-form-field></td>
+                                        <td><mat-form-field class="example-full-width">
+                                          <input readonly matInput placeholder="Cliente" value="{{todo.nombre}}">
+                                        </mat-form-field></td>
+                                        <td><mat-form-field class="example-full-width">
+                                                <input readonly matInput placeholder="Apellido" value="{{todo.apellido}}">
+                                              </mat-form-field></td>
+                                            
+                                                 
+                                         
+                                      </tr>
+                                    <tr>
+                                            <td><mat-form-field class="example-full-width">
+                                                    <input readonly matInput placeholder="Nit" value="{{todo.nit}}">
+                                                  </mat-form-field></td>
+                                    </tr></table>
+                            
+                            
+                        
+                        
+                        
+                        </mat-card>
+                        <mat-card>
+                                Productos
+                               
+                                        <table class="tdproductos">
+                                                <tr>
+                                                        <th>Descripción</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Precio</th>
+                                                        <th>Sub Total</th>
+                                                </tr>
+                                                <tr *ngFor="let producto of productos" >
+                                                        <td> {{producto.nombre}}</td>
+                                                        <td>{{producto.cantidad}}</td>
+                                                        <td>{{producto.precio}}</td>
+                                                        <td>{{producto.cantidad*producto.precio}}</td>
+                                                </tr>
+                                                <tr>
+                                                        <th colspan="3">Total</th>
+                                                        <td >{{suma}}</td>
+                                                </tr>
+                                        </table>
+                                       
+                                    
+                                
+                        </mat-card>
+                        <button mat-button type="submit">Cobrar</button>
+        
+</form>
 
-                      </mat-form-field></td>
-                      <td class="td">
-                            <mat-form-field class="example-full-width">
-                                    <mat-label>Metodo de pago</mat-label>
-                                    <mat-select>
-                                      <mat-option  [value]="1">
-                                       Tarjeta
-                                      </mat-option>
-                                      <mat-option  [value]="2">
-                                            Efectivo
-                                           </mat-option>
-                                    </mat-select>
-                                  </mat-form-field>
-                      </td>
-                      <td class="td">
-                            <mat-checkbox (change)="Imprimir($event)">Imprimir</mat-checkbox>
-                      </td>
-              </tr></table>
-</mat-card>
 
-<mat-card>
-        <table class="example-full-width" cellspacing="0"><tr>
-                <td><mat-form-field class="example-full-width">
-                        <input readonly matInput placeholder="Carnet" value="ss">
-                        <span>{{todo.nombre}}</span>
-                      </mat-form-field></td>
-                <td><mat-form-field class="example-full-width">
-                  <input readonly matInput placeholder="Cliente°" value="Fernando">
-                </mat-form-field></td>
-                <td><mat-form-field class="example-full-width">
-                        <input readonly matInput placeholder="Apellido" value="Mercado">
-                      </mat-form-field></td>
-                    
-                         
-                 
-              </tr>
-            <tr>
-                    <td><mat-form-field class="example-full-width">
-                            <input readonly matInput placeholder="Factura N°" value="12">
-                          </mat-form-field></td>
-            </tr></table>
-    
-    
-
-
-
-</mat-card>
-
-
-<div class="ocultars" id="imprimir" #imprimir>
+<div class="ocultar" id="imprimir" #imprimir>
         <div class="container">
                 <div class="title">
                                 <h1>Restaurante Ken</h1>

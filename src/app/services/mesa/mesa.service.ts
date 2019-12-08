@@ -39,6 +39,10 @@ export class MesaService {
   {
     return this.http.put(this.url+'mesas/editar.php',mesa);
   }
+  updateMesass(codigo)
+  {
+    return this.http.put(this.url+'mesas/cambiarEstado.php',codigo);
+  }
   private _listener=new Subject<any>();
   listen():Observable<any>{
       return this._listener.asObservable();

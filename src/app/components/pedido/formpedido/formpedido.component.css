@@ -2,4 +2,20 @@
     height: 100px;
     width: 100%;
     font-size: 3.5em;
+    text-align: center;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+}
+.button{
+    background: #218838;
+    color: #fff;
+    width: 80%;
+    margin-top: 10px;
+
+}
+.but{
+  text-align: center;
+  
 }

@@ -20,7 +20,7 @@
   }
 
 
-  h1{
+  h2{
     text-align: center;
   }
   .container{
@@ -36,4 +36,18 @@
   }
   .tr{
     border-top: 1px dashed #000;
+  }
+  .tdproductos{
+   
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .tdproductos td,th{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  .tdproductos td{
+    text-align: left;
   }

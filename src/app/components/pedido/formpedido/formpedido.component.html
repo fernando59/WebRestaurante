@@ -1,38 +1,43 @@
 <form #form="ngForm" (submit)="onSubmit(form)" [formGroup]="_serviceReserva.form" autocomplete="off"   >
         <div class="costo">
-            <span>{{suma}}</span>
+           <span>{{suma}}</span> Bs
         </div>
-        <mat-form-field>
-                <input
-                required
-                (input)="onSearchChange($event.target.value)"
-                formControlName="numero_personas"
-                class="stock" type="number" matInput placeholder="Cantidad de personas">
-         <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.required">Campo obligatorio</mat-error>
-                <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.min">Número mayor a cero</mat-error>
-                <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.max">Número menor a diez</mat-error>
-        </mat-form-field>  
-        
-        <mat-form-field>
-                <mat-label>Mesas</mat-label>
-                <mat-select name="select" #select [(value)]="selected"  multiple>
-                  <mat-option (onSelectionChange)="change($event,mesa.capacidad)"
-                  [disabled]="disable"
-                  *ngFor="let mesa of listamesas" [value]="mesa.codigo" >
-                      <div class="listamesas" >
-                          <span>
-                            {{mesa.nombre}}
-                          </span>
-                          <span>
-                            {{mesa.capacidad}}
+        <div class="body">
+          <mat-form-field>
+            <input
+            required
+            (input)="onSearchChange($event.target.value)"
+            formControlName="numero_personas"
+            class="stock" type="number" matInput placeholder="Cantidad de personas">
+     <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.required">Campo obligatorio</mat-error>
+            <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.min">Número mayor a cero</mat-error>
+            <mat-error *ngIf="_serviceReserva.form.controls['numero_personas'].errors?.max">Número menor a diez</mat-error>
+    </mat-form-field>  
+    
+    <mat-form-field>
+            <mat-label>Mesas</mat-label>
+            <mat-select name="select" #select [(value)]="selected"  multiple>
+              <mat-option (onSelectionChange)="change($event,mesa.capacidad)"
+              [disabled]="disable"
+              *ngFor="let mesa of listamesas" [value]="mesa.codigo" >
+                  <div class="listamesas" >
+                      <span>
+                        {{mesa.nombre}}
+                      </span>
+                      <span>
+                        {{mesa.capacidad}}
 
-                          </span>
-                      </div>
-                    </mat-option>
-                </mat-select>
-              </mat-form-field>
-              
-              <button type="submit"  [disabled]="form.invalid" mat-raised-button class="button" >Guardar</button>
+                      </span>
+                  </div>
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+       
+              <div class="but">
+                <button type="submit"  [disabled]="form.invalid" mat-raised-button class="button" >Guardar</button>
+
+              </div>
 </form>
 
 

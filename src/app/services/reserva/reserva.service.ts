@@ -50,7 +50,7 @@ export class ReservaService {
 {
   return this.http.get(this.url+'reservas/uno.php?id='+codigo);
 }
-  editarEstadoReserva(reserva:Reserva)
+  editarEstadoReserva(reserva)
 {
  
   return this.http.put(this.url+'reservas/editarestado.php',reserva);
