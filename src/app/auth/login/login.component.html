@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="container">
+    <div class="image">
+
+    </div>
+    <div class="form">
+        <h2>Login</h2>
+            <mat-form-field>
+                    <input matInput placeholder="Usuario">
+                  </mat-form-field>
+            <mat-form-field>
+                    <input matInput placeholder="Contraseña" [type]="hide ? 'text' : 'password'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+            <button mat-button mat-raised-button (click)="cambiar()" class="button">Ingresar</button>
+    </div>
+        
+</div>

@@ -60,7 +60,7 @@ export class FormulariopersonaComponent implements OnInit {
       
       
       )
-    console.log(form.value)
+      this.dialobox.close();
   }
 
 }

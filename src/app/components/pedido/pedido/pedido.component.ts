@@ -42,7 +42,7 @@ export class PedidoComponent implements OnInit {
       {
         if(res)
         {
-          this.router.navigateByUrl('pedidos/crear');
+          this.router.navigateByUrl('inicio/pedidos/crear');
         }
       });
   }
