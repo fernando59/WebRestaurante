@@ -4,7 +4,7 @@ export class  Producto{
         public nombre:string,
         public descripcion:string,
         public precio:Number,
-        public sw_stock:Number,
+        public imagen:string,
         public id_unidad_medida:Number,
         public  unidad_medida:string
     ){}

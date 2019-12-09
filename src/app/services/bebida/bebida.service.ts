@@ -29,8 +29,8 @@ form:FormGroup=new FormGroup({
   nombre:new FormControl('',Validators.required),
   descripcion:new FormControl('',[Validators.required,Validators.minLength(4)]),
   precio:new FormControl(0,[Validators.required,Validators.min(1)]),
-  sw_stock:new FormControl(0,[Validators.required,Validators.min(1)]),
-  tipo_producto:new FormControl('R',),
+  imagen:new FormControl(null),
+  id_tipo_producto:new FormControl(2),
   unidad_de_medida:new FormControl(''),
   id_unidad_medida:new FormControl(0)
 
@@ -40,7 +40,7 @@ form2:FormGroup=new FormGroup({
   nombre:new FormControl('',Validators.required),
   descripcion:new FormControl('',[Validators.required,Validators.minLength(4)]),
   precio:new FormControl(0,[Validators.required,Validators.min(1)]),
-  sw_stock:new FormControl(0,[Validators.required,Validators.min(1)]),
+  imagen:new FormControl(null),
   tipo_producto:new FormControl('A',),
   unidad_de_medida:new FormControl(''),
   id_unidad_medida:new FormControl(0)
