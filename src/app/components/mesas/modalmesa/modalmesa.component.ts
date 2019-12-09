@@ -42,7 +42,7 @@ export class ModalmesaComponent implements OnInit {
   onOpen()
   {
   
-    this.router.navigateByUrl('pedidos/crear');
+    this.router.navigateByUrl('inicio/pedidos/crear');
     this.dialobox.close();
   }
   onOpenn()

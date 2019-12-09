@@ -1,0 +1,28 @@
+<h2>Reservas del día</h2>
+<mat-grid-list cols="4" rowHeight="430px">
+        <mat-grid-tile *ngFor="let filtrado of reservas">
+                <div class="container" >
+                <div class="card">
+                        <div class="face face1">
+                                <div class="content">
+                                        <h3>{{filtrado.hora}}</h3>
+                                        <h3> {{filtrado.nombre}}</h3>
+                                    </div>
+                        </div>
+                     
+                        <div class="face face2">
+                            <div class="content">
+                                <p>
+                                  Va a traer a sus hijos
+                                </p>
+                                <a href="#">Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </mat-grid-tile>
+ 
+      </mat-grid-list>
+
+
+

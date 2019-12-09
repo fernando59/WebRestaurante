@@ -1,6 +1,6 @@
 //importo los modulos de router
-import {ModuleWithProviders} from '@angular/core'
-import {Routes,RouterModule} from '@angular/router'
+import { ModuleWithProviders } from '@angular/core'
+import { Routes, RouterModule } from '@angular/router'
 import { InicioComponent } from './components/inicio/inicio.component'
 import { PedidosComponent } from './components/pedidos/pedidos.component'
 import { UsuariosComponent } from './components/usuarios/usuarios.component'
@@ -17,34 +17,50 @@ import { CrearReservaComponent } from './components/reservas/crear-reserva/crear
 import { ImprimirComponent } from './components/imprimir/imprimir.component'
 import { FacturaComponent } from './components/factura/factura.component'
 import { TablaComponent } from './components/pedido/tabla/tabla.component';
+import { LoginComponent } from './auth/login/login.component'
+import { TablareservasComponent } from './components/reservas/tablareservas/tablareservas.component'
 
 
-const appRoutes:Routes=[
-    {path:'',redirectTo:'/login',pathMatch:'full'},
-    {path:'login',loadChildren:'./auth/auth.module#AuthModule'},
-    {path:'',component:InicioComponent},
-    {path:'pedidos',component:PedidosComponent
-,children:[
-    {path:'',component:PedidoComponent},
-    {path:'mesas',component:MesasComponent},
-    {path:'pedido',component:PedidoComponent},
-     {path:'crear',component:CrearpedidoComponent},
-    {path:'nuevo',component:CrearpedidoComponent},
-    {path:'factura/:codigo',component:FacturaComponent},
-    {path:'tabla',component:TablaComponent}
-    
-]},
-    {path:'usuarios',component:UsuariosComponent,
-children:[
-    {path:'persona',component:PersonasComponent}
-]},
-  {path:'productos',component:ProductosComponent,
-  children:[{path:'bebidas',component:BebidasComponent},
-            {path:'platos',component:PlatosComponent},
-            ]},
-    {path:'reservas',component:ReservasComponent,
-children:[{path:'crearReserva',component:CrearReservaComponent},
-            {path:'listarReserva',component:ReservaChildComponent}]}
+const appRoutes: Routes = [
+
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', component:LoginComponent },
+    {
+        path: 'inicio', component: InicioComponent, children: [
+            {
+                path: 'pedidos', component: PedidosComponent
+                , children: [
+                    { path: '', component: PedidoComponent },
+                    { path: 'mesas', component: MesasComponent },
+                    { path: 'pedido', component: PedidoComponent },
+                    { path: 'crear', component: CrearpedidoComponent },
+                    { path: 'nuevo', component: CrearpedidoComponent },
+                    { path: 'factura/:codigo', component: FacturaComponent },
+                    { path: 'tabla', component: TablaComponent }
+
+                ]
+            },
+            {
+                path: 'usuarios', component: UsuariosComponent,
+                children: [
+                    { path: 'persona', component: PersonasComponent }
+                ]
+            },
+            {
+                path: 'productos', component: ProductosComponent,
+                children: [{ path: 'bebidas', component: BebidasComponent },
+                { path: 'platos', component: PlatosComponent },
+                ]
+            },
+            {
+                path: 'reservas', component: ReservasComponent,
+                children: [{ path: 'crearReserva', component: CrearReservaComponent },
+                { path: 'listarReserva', component: ReservaChildComponent },
+            {path:'tabla',component:TablareservasComponent}]
+            }
+        ]
+    },
+
 ];
-export const appRoutingProviders:any[]=[];
-export const routing:ModuleWithProviders=RouterModule.forRoot(appRoutes);
+export const appRoutingProviders: any[] = [];
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
