@@ -30,9 +30,21 @@ export class ModalmesaComponent implements OnInit {
     public meserosItems:any;
 
   ngOnInit() {
-    this._serviceMesa.mesaList=this.data;
-    console.log(this._serviceMesa.mesaList)
+    console.log(this.data)
+    this.inicializar();
+
     this.drowdownRefresh();
+  }
+  inicializar()
+  {
+    this._serviceMesa.mesaList=this.data.mesa;
+    if(this.data.editar)
+    {
+      this._serviceReserva.form.controls['nombre_cliente'].setValue(this.data.mesa)
+    }else{
+
+    }
+
   }
   onClose()
   {

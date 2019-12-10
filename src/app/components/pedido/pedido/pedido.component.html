@@ -7,12 +7,13 @@
                                             <h3>{{mesa.nombre}}</h3>
                                     </div>
                                     <div *ngIf="mesa.estado=='A'"  class="button-container">
-                                        <button class="button-a" (click)="abrirMesa(mesa)">Habilitar</button>
+                                        <button class="button-a" (click)="abrirMesa(mesa,false)">Habilitar</button>
                                        <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
                                          
                                     </div>    
                                     <div *ngIf="mesa.estado=='B'"  class="button-container">
                                         <button class="button-a" (click)="abrirFactura(mesa.codigo)">Facturar</button>
+                                        <button class="button-a" (click)="abrirMesa(mesa,true)">Editar</button>
                                        <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
                                             
                                     </div>    

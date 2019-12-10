@@ -8,9 +8,13 @@
         <button (click)="onDrop('parrilla')">Parilla</button>
     </div>
     <div class="menu">
-        <app-tablamenu [categoria]="categoria" (producto)="enviarDatos($event)"></app-tablamenu>
+        <app-tablamenu
+         [categoria]="categoria" 
+         (producto)="enviarDatos($event)"
+       
+         ></app-tablamenu>
     </div>
     <div class="caja">
-        <app-formpedido [producto]="producto" [resta]="resta"></app-formpedido>
+        <app-formpedido [producto]="producto" ></app-formpedido>
     </div>
 </div>

@@ -27,8 +27,7 @@ export class FacturaComponent implements OnInit {
     private snackbar: MatSnackBar,
     private router:Router,
   ) { }
-  mensaje ='fdfdsafdsafa'
-  aa=['fdasfds','fdsafdsaf','fdasfsa']
+
   todos:any=[];
   todo:any=[];
   productos:any=[]
@@ -73,7 +72,7 @@ export class FacturaComponent implements OnInit {
       console.log(enviar)
       this._serviceFactura.insertFactura(this._serviceFactura.form.value).subscribe(fac=>{
         enviar.map(codigo=>{
-          let a={codigo:codigo.codigo}
+          let a={codigo:codigo.codigo,estado:"A"}
           this._serviceMesa.updateMesass(a).subscribe(mes=>{
             let reservaE={codigo:this.todo.codigo_reserva,estado:'FINALIZADO'}
             this._serviceReserva.editarEstadoReserva(reservaE).subscribe(est=>
@@ -86,10 +85,10 @@ export class FacturaComponent implements OnInit {
         
                   })
                 })
-            
+                
               })
-          
-            this.router.navigateByUrl('pedidos/pedido');
+              
+            this.router.navigateByUrl('inicio/pedidos/pedido');
           })
           console.log(codigo.codigo)
         })

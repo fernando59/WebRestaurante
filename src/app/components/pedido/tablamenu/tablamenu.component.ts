@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges , EventEmitter, Output} from '@angular/core';
 import { BebidaService } from 'src/app/services/bebida/bebida.service';
 import { Producto } from 'src/app/models/producto';
+import { IncrementarService } from 'src/app/services/incrementar/incrementar.service';
 
 @Component({
   selector: 'app-tablamenu',
@@ -10,13 +11,12 @@ import { Producto } from 'src/app/models/producto';
 export class TablamenuComponent implements OnInit, OnChanges {
 
   constructor(
-    private _serviceProductos:BebidaService
+    private _serviceProductos:BebidaService,
+    public _serviceIncrementar:IncrementarService
   ) { }
     bebida:any;
     @Input()  categoria:string;
     public bebidaslist:Producto;
-     @Output() producto =new EventEmitter<Producto>();
-     @Output() resta=new EventEmitter<Producto>();
   ngOnInit() {
    
   
@@ -60,11 +60,13 @@ export class TablamenuComponent implements OnInit, OnChanges {
     })
   }
   onAdd(producto:Producto){
-    this.producto.emit(producto);
-    console.log('e')
+  
+    this._serviceIncrementar.sumar(parseInt( producto.codigo.toString()),parseInt( producto.precio.toString()))
+  
   }
-  onRes(producto:Producto){
-    this.resta.emit(producto);
-    console.log('e')
+  onRest(producto:Producto){
+    this._serviceIncrementar.restar(parseInt( producto.codigo.toString()),parseInt( producto.precio.toString()))
+
+  
   }
 }

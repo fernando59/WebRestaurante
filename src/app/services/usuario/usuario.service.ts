@@ -44,6 +44,18 @@ export class UsuarioService {
   {
     return this.http.get(this.url+'usuarios/buscar.php?s='+palabra)
   }
+  getCliente():Observable<any>
+  {
+    return this.http.get(this.url+'personas/cliente.php');
+  }
+  getCaja():Observable<any>
+  {
+    return this.http.get(this.url+'personas/caja.php');
+  }
+  getMesero():Observable<any>
+  {
+    return this.http.get(this.url+'personas/mesero.php');
+  }
   
 validarEmail(control:AbstractControl)
 {

@@ -21,6 +21,7 @@ export class PedidoComponent implements OnInit {
     
   ) { }
   public mesas: Mesa[]
+  todo:any
   ngOnInit() {
     this.getMesas();
   }
@@ -28,9 +29,17 @@ export class PedidoComponent implements OnInit {
   getMesas() {
     this._serviceMesa.getMesas().subscribe(res => {
       this.mesas = res.data
+     // this.obtenerTodo(this.mesas)
     })
   }
-  abrirMesa(mesa:Mesa)
+  obtenerTodo(codigo)
+  {
+    this._servicePedido.obtenerTodo2(codigo).subscribe(todo=>{
+      this.todo=todo.data
+
+    })
+  }
+  abrirMesa(mesa:Mesa,editar)
   {
 
  
@@ -38,7 +47,7 @@ export class PedidoComponent implements OnInit {
     dialog.autoFocus=true;
     dialog.width='50%';
     dialog.disableClose=true;
-    this.dialog.open(ModalmesaComponent,{data:mesa}).afterClosed().subscribe(res=>
+    this.dialog.open(ModalmesaComponent,{data:{mesa,editar:editar}}).afterClosed().subscribe(res=>
       {
         if(res)
         {
@@ -49,6 +58,6 @@ export class PedidoComponent implements OnInit {
   abrirFactura(mesa)
   {
     console.log(mesa)
-    this.router.navigateByUrl('pedidos/factura/'+mesa);
+    this.router.navigateByUrl('inicio/pedidos/factura/'+mesa);
   }
 }

@@ -18,6 +18,7 @@ export class CrearpedidoComponent implements OnInit {
 
     public categoria:string;
     public producto:Producto;
+    public codigo:Number
   ngOnInit() {
     
   }
@@ -39,6 +40,12 @@ export class CrearpedidoComponent implements OnInit {
   enviarDatos(producto:Producto)
   {
     this.producto=producto;
+   
+  }
+  
+  enviarDatos2(producto:Producto)
+  {
+    this.codigo=producto.codigo;
    
   }
 }

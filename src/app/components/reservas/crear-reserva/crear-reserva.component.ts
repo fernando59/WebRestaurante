@@ -7,6 +7,7 @@ import { AppDateAdapter, APP_DATE_FORMATS } from './picker';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-crear-reserva',
   templateUrl: './crear-reserva.component.html',
@@ -27,7 +28,8 @@ disable:boolean=false;
     private _serviceMesa:MesaService,
     public _serviceReserva:ReservaService,
     private dialog:MatDialog,
-    private snackbar:MatSnackBar
+    private snackbar:MatSnackBar,
+    private router: Router,
     
   ) { }
   listamesas:any;
@@ -55,6 +57,7 @@ disable:boolean=false;
     return false;
   }
   onSubmit(form:NgForm){
+    console.log(form.value)
     const momentDate = new Date(form.value.fecha.toString()); // Replace event.value with your date value
     const formattedDate = moment(momentDate).format("YYYY/MM/DD");
     form.value.fecha=formattedDate;
@@ -84,7 +87,7 @@ disable:boolean=false;
         console.log(error)
       })
     })
-  
+    this.router.navigateByUrl('inicio/pedidos/tabla');
   }
   change(event,suma)
   {
