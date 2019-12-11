@@ -3,6 +3,7 @@ import { Global } from '../global';
 import { Observable } from 'rxjs';
 import { Persona } from 'src/app/models/persona';
 import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,18 @@ export class PersonaService {
     {
       this.url=Global.url;
     }
+    form:FormGroup=new FormGroup({
+      codigo:new FormControl(0),
+      nombre:new FormControl('',Validators.required),
+      apellido:new FormControl('',Validators.required),
+      edad:new FormControl(0,[Validators.required,Validators.min(1)]),
+      direccion:new FormControl('',Validators.required),
+      telefono:new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(8)]),
+      carnet:new FormControl('',Validators.required),
+      foto:new FormControl(''),
+      nit:new FormControl(''),
+      descripcion:new FormControl('')
+    })
   getPersona():Observable<any>
   {
       return this.http.get(this.url+'usuarios/mostrar.php');
@@ -43,4 +56,24 @@ export class PersonaService {
   {
     return this.http.get(this.url+'personas/cliente.php');
   }
+  obtenerUltimoId():Observable<any>
+  {
+    return this.http.get(this.url+'personas/ultimoId.php');
+  }
+  insertCliente(cliente)
+  {
+  
+    return this.http.post(this.url+'personas/crearCliente.php',cliente);
+  }
+  insertMesero(cliente)
+  {
+  
+    return this.http.post(this.url+'personas/crearMesero.php',cliente);
+  }
+  insertCaja(cliente)
+  {
+  
+    return this.http.post(this.url+'personas/crearCaja.php',cliente);
+  }
+
 }

@@ -56,7 +56,8 @@ export class UsuarioService {
   {
     return this.http.get(this.url+'personas/mesero.php');
   }
-  
+
+ 
 validarEmail(control:AbstractControl)
 {
   let email={

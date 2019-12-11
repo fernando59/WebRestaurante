@@ -51,3 +51,7 @@ mat-expansion-panel{
 .perfil{
     height: 100px;
 }
+.left::-webkit-scrollbar{
+    width: 10px;
+    background: #021b79;
+}

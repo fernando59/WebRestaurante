@@ -48,4 +48,8 @@ export class PedidoService {
   {
     return this.http.get(this.url+'pedidos/mostrarProductos.php?s='+pedido);
   }
+  obtenerMesa(pedido):Observable<any>
+  {
+    return this.http.get(this.url+'factura/obtenerMesa.php?s='+pedido);
+  }
 }

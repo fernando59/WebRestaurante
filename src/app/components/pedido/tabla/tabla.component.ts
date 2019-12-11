@@ -11,7 +11,9 @@ export class TablaComponent implements OnInit {
   constructor(
     public _servicePedido: PedidoService,
   ) { }
-    todo:any
+    todo:any=[]
+    producto:any=[]
+    unidos:any
   ngOnInit() {
     this.mostrar()
   }
@@ -21,6 +23,19 @@ export class TablaComponent implements OnInit {
       {
         this.todo=res.data
         console.log(this.todo)
+        this.todo.map(t=>{
+          this._servicePedido.obtenerProducto(t.codigo_pedido).subscribe(mesa=>{
+            this.producto.push(mesa.data)
+            console.log(this.producto)
+            //this.unidos={pedido:t.codigo_pedido};
+            //this.producto=this.producto.concat({pedido:t.codigo_pedido});
+            //let a=Object.assign(this.unidos,this.producto)
+          })
+        })
+     
+        
+        
       })
+    
   }
 }

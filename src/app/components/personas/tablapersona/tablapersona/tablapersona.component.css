@@ -23,3 +23,6 @@ mat-footer-row{
     0%{transform: rotate(0deg)}
     100%{transform: rotate(360deg)}
 }
+mat-radio-button{
+    padding: 5px;
+}

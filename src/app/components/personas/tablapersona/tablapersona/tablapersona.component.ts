@@ -13,7 +13,7 @@ import { FormulariopersonaComponent } from '../../formulariopersona/formulariope
 })
 export class TablapersonaComponent implements OnInit {
   buscar: string;
-  nuevo:number
+  nuevo:number=1
   titulo:string='Nuevo Cliente'
   constructor(
     private _servicePersona: UsuarioService,
@@ -99,10 +99,11 @@ export class TablapersonaComponent implements OnInit {
     this.dialog.open(EditarpersonaComponent, { data: persona });
   }
   onCreateS() {
-    const dialog = new MatDialogConfig();
-    dialog.autoFocus = true;
-    dialog.height = '600px'
-    this.dialog.open(FormulariopersonaComponent, dialog).afterClosed().subscribe(res => {
+
+    this.dialog.open(FormulariopersonaComponent,{data:this.nuevo,
+      autoFocus:true,
+      disableClose:true,
+      height:'600px'} ).afterClosed().subscribe(res => {
       this.refrescarTabla()
     });
   }

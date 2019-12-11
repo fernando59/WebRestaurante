@@ -1,10 +1,43 @@
 <h2>Pedidos del día</h2>
 
+<mat-grid-list cols="2" rowHeight="2:1" >
 
-<div *ngFor="let all of todo">
-    <div class="carta">
-            <span>{{all.codigo_pedido}}</span>
-            <span>{{all.nombre}}</span>
-    </div>
-        
-</div>
+    <mat-grid-tile *ngFor="let all of todo">
+            <div class="carta" >
+                <input type="checkbox">
+                <div class="toggle">+</div>
+                <div class="image">
+                    <h2>{{all.mesa}}</h2>
+                </div>
+                <div class="content">
+                       
+                                <h2>MENU</h2>
+                        
+                                    <div *ngFor="let product of  producto"  >
+                                        <div *ngFor="let t of product">
+                                                
+                                                <div *ngIf="all.codigo_pedido==t.pedido">
+                                                    <ul>
+                                                        <li>{{t.nombre}} -----------{{t.cantidad}}</li>
+                                                    </ul>
+                                                    
+                                                </div>
+                                        </div>
+                                       
+                                        
+                                    </div>
+                                   
+                                       
+                                        
+                                       
+                                
+                      
+                      
+                </div>
+                
+              
+             
+            </div>
+        </mat-grid-tile>
+
+  </mat-grid-list>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatSnackBar, MatDialogRef } from '@angular/material';
+import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
@@ -13,28 +13,22 @@ export class FormulariopersonaComponent implements OnInit {
   constructor(
     public dialobox:MatDialogRef<FormulariopersonaComponent>,
     private _personaService:PersonaService,
-    private snackbar:MatSnackBar
+    private snackbar:MatSnackBar,
+    @Inject (MAT_DIALOG_DATA) public data:any,
   ) { }
-
+    titulo:string='Nuevo Cliente'
   ngOnInit() {
-    this.resetForm();
-  }
-  resetForm(form?:NgForm)
-  {
-    if(form!= null)
-      form.reset();
-
-    this._personaService.personalist={
-      codigo:0,
-      nombre:'',
-      apellido:'',
-      edad:0,
-      telefono:'',
-      direccion:'',
-      carnet:''
-  
+    if(this.data==1)
+    {
+      this.titulo='Nuevo Cliente'
+    }else if(this.data==2)
+    {
+      this.titulo='Nuevo Mesero'
+    }else
+    {
+      this.titulo='Nuevo Cajero'
     }
-
+    console.log(this.data)
   }
   onClose()
   {
@@ -43,16 +37,68 @@ export class FormulariopersonaComponent implements OnInit {
   }
   onSubmit(form:NgForm)
   {
+  
     this._personaService.insertPersona(form.value).subscribe(res=>
       
       {
-        this.resetForm();
-
-        this.snackbar.open('Agregado correctamente','',{
-          duration:3000,
-          verticalPosition:'top'
+        if(this.data==1){
+          this._personaService.obtenerUltimoId().subscribe(codigo=>{
+            let ultimo=codigo.data
+          ultimo.map(c=>{
+            let enviar={codigo:parseInt( c.codigo),nit:form.value.nit}
+            this._personaService.insertCliente(enviar).subscribe(r=>{
+              console.log(r)
+              this.snackbar.open('Agregado correctamente','',{
+                duration:3000,
+                verticalPosition:'top'
+              })
+            })
+          })
+        
+      
+            
         })
-        console.log(res)
+        }else if(this.data==2)
+        {
+          this._personaService.obtenerUltimoId().subscribe(codigo=>{
+            let ultimo=codigo.data
+          ultimo.map(c=>{
+            let enviar={codigo:parseInt( c.codigo),foto:form.value.foto}
+            this._personaService.insertMesero(enviar).subscribe(r=>{
+              console.log(r)
+              this.snackbar.open('Agregado correctamente','',{
+                duration:3000,
+                verticalPosition:'top'
+              })
+            })
+          })
+        
+      
+            
+        })
+        }else{
+          this._personaService.obtenerUltimoId().subscribe(codigo=>{
+            let ultimo=codigo.data
+          ultimo.map(c=>{
+            let enviar={codigo:parseInt( c.codigo),descripcion:form.value.descripcion}
+            this._personaService.insertCaja(enviar).subscribe(r=>{
+              console.log(r)
+              this.snackbar.open('Agregado correctamente','',{
+                duration:3000,
+                verticalPosition:'top'
+              })
+            })
+          })
+        
+      
+            
+        })
+        }
+   
+         
+
+   
+      
       },
       error=>{
         console.log(error)

@@ -20,13 +20,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
     imports:[MatMenuModule,MatButtonModule,
         MatToolbarModule,MatSidenavModule,
         MatTableModule,MatIconModule,MatSnackBarModule,MatDialogModule,
         MatFormFieldModule,MatInputModule,MatRadioModule,MatCardModule,MatExpansionModule,
     MatPaginatorModule,MatSortModule,MatSelectModule,MatGridListModule,MatDatepickerModule,MatNativeDateModule,
-    NgxMaterialTimepickerModule,MatBadgeModule,MatCheckboxModule],
+    NgxMaterialTimepickerModule,MatBadgeModule,MatCheckboxModule,MatListModule],
 
 
 
@@ -35,7 +36,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
         MatTableModule,MatIconModule,MatSnackBarModule,MatDialogModule,
         MatFormFieldModule,MatInputModule,MatRadioModule,MatCardModule,MatExpansionModule,
     MatPaginatorModule,MatSortModule,MatSelectModule,MatGridListModule,MatDatepickerModule,MatNativeDateModule,
-    NgxMaterialTimepickerModule,MatBadgeModule,MatCheckboxModule]
+    NgxMaterialTimepickerModule,MatBadgeModule,MatCheckboxModule,MatListModule]
 })
 
 export class MaterialModule{}

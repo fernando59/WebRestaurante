@@ -2,74 +2,86 @@
     <button mat-button color="warn" (click)="onClose()">
         X
        </button>
-    <h2>Nueva Persona</h2>
-    
 </div>
-     
-      <form class="example-form form-persona" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+<h2>{{titulo}}</h2>
+      <form class="example-form form-persona" #form="ngForm" [formGroup]="_personaService.form" (submit)="onSubmit(form)" autocomplete="off">
         <div class="name-form">
           <mat-form-field class="example-full-width">
             <input required matInput
-            #nombre="ngModel"
-            name="nombre"
-            [(ngModel)]="_personaService.personalist.nombre"
+             name="nombre"
+                formControlName="nombre"
             placeholder="Nombre">
+            <mat-error *ngIf="_personaService.form.controls['nombre'].errors?.required">Campo obligatorio</mat-error>
+
           </mat-form-field>
       
           <mat-form-field class="example-full-width">
             <input matInput
-            required
-            #apellido="ngModel"
             name="apellido"
-            [(ngModel)]="_personaService.personalist.apellido"
+            formControlName="apellido"
              placeholder="Apellido">
+             <mat-error *ngIf="_personaService.form.controls['apellido'].errors?.required">Campo obligatorio</mat-error>
+
+          </mat-form-field>
+          <mat-form-field class="example-full-width" *ngIf="this.data==1">
+            <input matInput
+            name="nit"
+                formControlName="nit"
+             placeholder="Nit">
+             <mat-error *ngIf="_personaService.form.controls['nit'].errors?.required">Campo obligatorio</mat-error>
+
+          </mat-form-field>
+          <mat-form-field class="example-full-width" *ngIf="this.data==2">
+            <input matInput
+            name="foto"
+                formControlName="foto"
+             placeholder="Foto">
+             <mat-error *ngIf="_personaService.form.controls['foto'].errors?.required">Campo obligatorio</mat-error>
+
+          </mat-form-field>
+          <mat-form-field class="example-full-width" *ngIf="this.data==3">
+            <input matInput
+            name="descripcion"
+                formControlName="descripcion"
+             placeholder="Descripción">
+             <mat-error *ngIf="_personaService.form.controls['descripcion'].errors?.required">Campo obligatorio</mat-error>
+
           </mat-form-field>
         </div>
       
         <mat-form-field class="example-full-width">
           <input matInput type="number" min="0" 
-          #edad="ngModel"
           name="edad"
-          [(ngModel)]="_personaService.personalist.edad"    
+          formControlName="edad"
           placeholder="Edad">
+          <mat-error *ngIf="_personaService.form.controls['edad'].errors?.required">Campo obligatorio</mat-error>
+
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <span matPrefix>+659 &nbsp;</span>
-          <input type="tel" matInput
-          required
-          value=""
-          #telefono="ngModel"
+          <input matInput
           name="telefono"
-          [(ngModel)]="_personaService.personalist.telefono"
+                formControlName="telefono"
           placeholder="Telefono">
-      
+          <mat-error *ngIf="_personaService.form.controls['telefono'].errors?.required">Campo obligatorio</mat-error>
+          <mat-error *ngIf="_personaService.form.controls['telefono'].errors?.minlength">Error de formato</mat-error>
+          <mat-error *ngIf="_personaService.form.controls['telefono'].errors?.maxlength">Error de formato</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <textarea matInput placeholder="Direccion"
-          #direccion="ngModel"
-          required
           name="direccion"
-          [(ngModel)]="_personaService.personalist.direccion"
+          formControlName="direccion"
           ></textarea>
+          <mat-error *ngIf="_personaService.form.controls['direccion'].errors?.required">Campo obligatorio</mat-error>
+
         </mat-form-field>
         <mat-form-field class="example-full-width" hintLabel="Máximo 10 caracteres">
           <input #input maxlength="10" matInput placeholder="Carnet" 
-           #carnet="ngModel"
-           required
-           name="carnet" 
-           [(ngModel)]="_personaService.personalist.carnet">
+          name="carnet"
+          formControlName="carnet">
            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
         </mat-form-field>
-        <!--Radio buton-->
-       <!--<mat-radio-group 
-        #tipo_persona="ngModel"
-        name="tipo_persona" 
-        class="radio"
-        [(ngModel)]="_personaService.personalist.tipo"
-        aria-label="Select an option">
-            <mat-radio-button value="1">Mesero</mat-radio-button>
-            <mat-radio-button value="2">Cliente</mat-radio-button>
-          </mat-radio-group> --> 
+     
      
         <button mat-raised-button color="primary" 
         [disabled]="form.invalid"

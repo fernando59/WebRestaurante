@@ -6,8 +6,8 @@ export class Persona{
         public edad:number,
         public telefono:string,
         public direccion:string,
-        public carnet:string
-      
+        public carnet:string,
+        public nit:string
 
 
     ){}
