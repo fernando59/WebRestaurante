@@ -19,21 +19,29 @@ import { FacturaComponent } from './components/factura/factura.component'
 import { TablaComponent } from './components/pedido/tabla/tabla.component';
 import { LoginComponent } from './auth/login/login.component'
 import { TablareservasComponent } from './components/reservas/tablareservas/tablareservas.component'
+import { LinegraficoComponent } from './components/inicio/linegrafico/linegrafico.component';
+import { LingraficoComponent } from './components/inicio/lingrafico/lingrafico.component';
 
 
 const appRoutes: Routes = [
 
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component:LoginComponent },
+    { path: 'login', component: LoginComponent },
     {
         path: 'inicio', component: InicioComponent, children: [
             {
+                path: 'graficos', component: LinegraficoComponent, children: [
+                    { path: 'line', component: LingraficoComponent }
+                ]
+            }
+            , {
                 path: 'pedidos', component: PedidosComponent
                 , children: [
                     { path: '', component: PedidoComponent },
                     { path: 'mesas', component: MesasComponent },
                     { path: 'pedido', component: PedidoComponent },
                     { path: 'crear', component: CrearpedidoComponent },
+                    { path: 'crear/:codigo', component: CrearpedidoComponent },
                     { path: 'nuevo', component: CrearpedidoComponent },
                     { path: 'factura/:codigo', component: FacturaComponent },
                     { path: 'tabla', component: TablaComponent }
@@ -56,7 +64,7 @@ const appRoutes: Routes = [
                 path: 'reservas', component: ReservasComponent,
                 children: [{ path: 'crearReserva', component: CrearReservaComponent },
                 { path: 'listarReserva', component: ReservaChildComponent },
-            {path:'tabla',component:TablareservasComponent}]
+                { path: 'tabla', component: TablareservasComponent }]
             }
         ]
     },

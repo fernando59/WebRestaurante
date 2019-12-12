@@ -58,6 +58,8 @@ import { FacturaComponent } from './components/factura/factura.component';
 import { TablaComponent } from './components/pedido/tabla/tabla.component';
 import { LoginComponent } from './auth/login/login.component';
 import { TablareservasComponent } from './components/reservas/tablareservas/tablareservas.component';
+import { LinegraficoComponent } from './components/inicio/linegrafico/linegrafico.component';
+import { LingraficoComponent } from './components/inicio/lingrafico/lingrafico.component';
 
 
 @NgModule({
@@ -105,7 +107,9 @@ import { TablareservasComponent } from './components/reservas/tablareservas/tabl
     FacturaComponent,
     TablaComponent,
     LoginComponent,
-    TablareservasComponent
+    TablareservasComponent,
+    LinegraficoComponent,
+    LingraficoComponent
  
     
   ],
@@ -118,7 +122,8 @@ import { TablareservasComponent } from './components/reservas/tablareservas/tabl
     HttpClientModule,
     FormsModule,ReactiveFormsModule,
     NgxMaterialTimepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+   
   
     
   ],

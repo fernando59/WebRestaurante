@@ -2,18 +2,18 @@
     <div class="image">
 
     </div>
-    <div class="form">
-        <h2>Login</h2>
+    <form class="form" #form="ngForm" (submit)="login(form)" autocomplete="off">
+        <h2>Bienvenido al "Restaurante Ken"</h2>
             <mat-form-field>
-                    <input matInput placeholder="Usuario">
+                    <input name="nombre_usuario" ngModel matInput placeholder="Usuario">
                   </mat-form-field>
             <mat-form-field>
-                    <input matInput placeholder="Contraseña" [type]="hide ? 'text' : 'password'">
+                    <input name="password_usuario" ngModel matInput placeholder="Contraseña" [type]="hide ? 'text' : 'password'">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
                     </button>
                   </mat-form-field>
-            <button mat-button mat-raised-button (click)="cambiar()" class="button">Ingresar</button>
-    </div>
+            <button mat-button mat-raised-button type="submit" class="button">Ingresar</button>
+    </form>
         
 </div>

@@ -13,9 +13,9 @@
                         <div class="face face2">
                             <div class="content">
                                 <p>
-                                  Va a traer a sus hijos
+                                 {{filtrado.observaciones}}
                                 </p>
-                                <a href="#">Mas</a>
+                                <button mat-button (click)="cambiarEstado(filtrado.codigo)">Finalizar</button>
                             </div>
                         </div>
                     </div>

@@ -39,4 +39,8 @@ export class FacturaService {
   {
     return this.http.get(this.url+'factura/obtenerMesa.php?s='+pedido);
   }
+  mostrarTotal():Observable<any>
+  {
+    return this.http.get(this.url+'factura/mostrarTotal.php');
+  }
 }

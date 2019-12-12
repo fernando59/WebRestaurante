@@ -18,7 +18,22 @@
   .ocultar{
     display: none;
   }
-
+.but{
+  text-align: center;
+}
+.but button{
+  background: #218838;
+  width: 70%;
+  color: #fff;
+  padding: 5px;
+  margin-top: 8px;
+}
+.but button:disabled,
+.but button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 
   h2{
     text-align: center;

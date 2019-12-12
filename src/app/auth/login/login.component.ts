@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +11,21 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private router:Router
+    private router:Router,
+    public _serviceUsuario:UsuarioService
   ) { }
 
   ngOnInit() {
   }
-    cambiar()
+    login(usuario:NgForm)
     {
       this.router.navigateByUrl('inicio/pedidos');
+      /*console.log(usuario.value)
+      this._serviceUsuario.login(usuario.value).subscribe(res=>{
+        this.router.navigateByUrl('inicio/pedidos');
+      },error=>{
+        console.log('Error login')
+      })
+     */
     }
 }

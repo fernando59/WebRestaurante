@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservaService } from 'src/app/services/reserva/reserva.service';
 import { formatDate } from '@angular/common';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../../dialog/dialog/dialog.component';
 
 @Component({
   selector: 'app-tablareservas',
@@ -10,7 +12,8 @@ import { formatDate } from '@angular/common';
 export class TablareservasComponent implements OnInit {
 
   constructor(
-    public _serviceReserva:ReservaService
+    public _serviceReserva:ReservaService,
+    private dialog:MatDialog,
   ) { }
 
   ngOnInit() {
@@ -26,5 +29,27 @@ export class TablareservasComponent implements OnInit {
      console.log(this.reservas)
      
     })
+  }
+  cambiarEstado(codigo)
+  {
+    this.dialog.open(DialogComponent,{
+      disableClose: true,
+
+      data:{
+        codigo:1,
+        message:'¿Esta seguro que desea finalizar la reserva?'
+      }}).afterClosed().subscribe(res=>{
+        if(res)
+        {
+          let enviar={codigo:codigo,estado:'FINALIZADO'}
+          this._serviceReserva.editarEstadoReserva(enviar).subscribe(res=>{
+            console.log('editado correctamente')
+            this.mostrar()
+          })
+        }
+     
+      });
+
+  
   }
 }

@@ -7,24 +7,29 @@
                                             <h3>{{mesa.nombre}}</h3>
                                     </div>
                                     <div *ngIf="mesa.estado=='A'"  class="button-container">
-                                        <button class="button-a" (click)="abrirMesa(mesa,false)">Habilitar</button>
-                                       <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
-                                         
-                                    </div>    
-                                    <div *ngIf="mesa.estado=='B'"  class="button-container">
-                                        <button class="button-a" (click)="abrirFactura(mesa.codigo)">Facturar</button>
-                                        <button class="button-a" (click)="abrirMesa(mesa,true)">Editar</button>
-                                       <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
-                                            
-                                    </div>    
-                                    
-                                 
-                                    <span class="name">Fernando mercado saby</span>
-                                    <div>
-                                        <span>Total</span>
-                                        <span>300</span>
+                                            <div class="cont">
+                                                        <button class="button-a" (click)="abrirMesa(mesa,false)">Habilitar</button>
+                                                        <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
+                                                          <h2>Capacidad : {{mesa.capacidad}}</h2>
+                                            </div>
+                                          
+                                        </div>  
+                                    <div *ngFor="let todos of todo">
+                                            <div *ngFor="let t of todos">
+                                                <div *ngIf="mesa.codigo==t.codigo_mesa">
+                                                         
+                                                            <div *ngIf="mesa.estado=='B'"  class="button-container">
+                                                                <button class="button-a" (click)="abrirFactura(mesa.codigo)">Facturar</button>
+                                                                <button class="button-a" (click)="editar(t.codigo_pedido)">Editar</button>
+                                                               <!-- <a class="button-a" [routerLink]="['../nuevo']">Habilitar</a> --> 
+                                                                    
+                                                            </div>   
+                                                        <span class="name">{{t.nombre}}</span>
+                                                </div>
+                                             
+                                            </div>
                                     </div>
-                                    
+                                 
                                 </mat-card>
                             </div>
                 </mat-grid-tile> 

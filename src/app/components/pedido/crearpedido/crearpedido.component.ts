@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ModalmesaComponent } from '../../mesas/modalmesa/modalmesa.component';
 import { Producto } from 'src/app/models/producto';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-crearpedido',
@@ -14,6 +15,7 @@ export class CrearpedidoComponent implements OnInit {
  
   constructor(
     private dialog:MatDialog,
+   
   ) { }
 
     public categoria:string;

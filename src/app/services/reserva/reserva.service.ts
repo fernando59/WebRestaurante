@@ -21,9 +21,9 @@ export class ReservaService {
     tipo_reserva:new FormControl('A'),
     hora:new FormControl(0),
     numero_personas:new FormControl(0,[Validators.required,Validators.min(1),Validators.max(10)]),
-    observaciones:new FormControl('',Validators.required),
+    observaciones:new FormControl(''),
     id_cliente:new FormControl(0),
-    nombre_cliente:new FormControl('',Validators.required),
+    nombre_cliente:new FormControl(''),
     id_mesero:new FormControl(0),
     id_mesas:new FormControl([0])
 

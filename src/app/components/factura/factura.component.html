@@ -18,7 +18,7 @@
                                               <td class="td">
                                                     <mat-form-field class="example-full-width">
                                                             <mat-label>Metodo de pago</mat-label>
-                                                            <mat-select name="metodo_pago" ngModel>
+                                                            <mat-select  name="metodo_pago" required ngModel>
                                                               <mat-option  [value]="1">
                                                                Tarjeta
                                                               </mat-option>
@@ -86,7 +86,10 @@
                                     
                                 
                         </mat-card>
-                        <button mat-button type="submit">Cobrar</button>
+                        <div class="but">
+                                        <button [disabled]="form.invalid" mat-button type="submit">Cobrar</button>
+                        </div>
+                       
         
 </form>
 

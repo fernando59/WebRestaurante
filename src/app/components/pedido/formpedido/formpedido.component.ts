@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges,OnDestroy } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { ReservaService } from 'src/app/services/reserva/reserva.service';
 import { formatDate } from '@angular/common';
@@ -6,7 +6,7 @@ import { MesaService } from 'src/app/services/mesa/mesa.service';
 import { PedidoService } from 'src/app/services/pedido/pedido.service';
 import { MatSnackBar } from '@angular/material';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { IncrementarService } from 'src/app/services/incrementar/incrementar.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { IncrementarService } from 'src/app/services/incrementar/incrementar.ser
   templateUrl: './formpedido.component.html',
   styleUrls: ['./formpedido.component.css']
 })
-export class FormpedidoComponent implements OnInit, OnChanges {
+export class FormpedidoComponent implements OnInit, OnChanges,OnDestroy {
   mesa: any;
   selected: [];
   sumas: number = 0;
@@ -27,7 +27,8 @@ export class FormpedidoComponent implements OnInit, OnChanges {
     public _servicePedido: PedidoService,
     private snackbar: MatSnackBar,
     private router: Router,
-    public _serviceIncrementar: IncrementarService
+    public _serviceIncrementar: IncrementarService,
+    private rutaActiva: ActivatedRoute,
   ) { }
   public precio: any[] = [];
 
@@ -39,6 +40,28 @@ export class FormpedidoComponent implements OnInit, OnChanges {
   id_mesas = []
   public suma: number = 0;
   ngOnInit() {
+    if(this.rutaActiva.snapshot.params.codigo!=null){
+      this._servicePedido.obtenerProducto(parseInt(this.rutaActiva.snapshot.params.codigo)).subscribe(res=>{
+        let codigo=res.data
+        codigo.map(codigos=>{
+          if(codigos.cantidad>1)
+          {
+            for(let i=0; i<codigos.cantidad; i++)
+            {
+              this._serviceIncrementar.suma.push(parseInt( codigos.codigo))
+              this._serviceIncrementar.res+=parseInt(codigos.precio)
+            }
+          }else{
+            this._serviceIncrementar.suma.push(parseInt( codigos.codigo))
+            this._serviceIncrementar.res+=parseInt(codigos.precio)
+          }
+        
+        })
+     
+       console.log(res.data)
+       console.log(this._serviceIncrementar.suma)
+      })
+     }
     this._serviceMesa.getMesas().subscribe(res => {
       this.mesa = res.data;
       this.listamesas = this.mesa.filter(item => item.estado == 'A')
@@ -52,6 +75,7 @@ export class FormpedidoComponent implements OnInit, OnChanges {
     this._serviceReserva.form.controls['fecha'].setValue(formatDate(new Date(), 'yyyy/MM/dd', 'en'));
     this._serviceReserva.form.controls['hora'].setValue(formatDate(new Date(), 'h:mm:ss a', 'en'));
     this._serviceReserva.form.controls['estado'].setValue('SOLICITADO');
+
     this._serviceReserva.form.controls['tipo_reserva'].setValue('A');
 
     //this._serviceReserva.form.controls['id_mesas'].setValue(1);
@@ -87,7 +111,19 @@ export class FormpedidoComponent implements OnInit, OnChanges {
     this.verificar = parseInt(searchValue);
     console.log(searchValue);
   }
+  ngOnDestroy()
+  {
+    this._serviceIncrementar.suma=[];
+    this._serviceIncrementar.res=0;
+    this._serviceReserva.form.reset();
+    this._servicePedido.form.reset();
+    console.log('destruido')
+  }
   onSubmit(form: NgForm) {
+    this._serviceReserva.form.controls['numero_personas'].setValue(1);
+    if(this.rutaActiva.snapshot.params.codigo!=null){
+   
+     }
     this._serviceReserva.insertReserva(this._serviceReserva.form.value).subscribe(res => {
 
       this._serviceReserva.obtenerUltimoId().subscribe(codigo => {
@@ -151,6 +187,6 @@ export class FormpedidoComponent implements OnInit, OnChanges {
     })
 
 
-
+  
   }
 }

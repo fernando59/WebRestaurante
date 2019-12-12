@@ -56,8 +56,10 @@ export class UsuarioService {
   {
     return this.http.get(this.url+'personas/mesero.php');
   }
-
- 
+  login(usuario)
+  {
+    return this.http.post(this.url+'usuario/verificar.php',usuario);
+  }
 validarEmail(control:AbstractControl)
 {
   let email={

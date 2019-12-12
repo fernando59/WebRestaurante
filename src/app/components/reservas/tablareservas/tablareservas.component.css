@@ -69,3 +69,10 @@ background: #ff0057;
 .container .card:hover .face.face2 {
     transform: translateY(0px);
 }
+button{
+    background: #ff0057;
+    color: #fff;
+}
+.content p{
+    padding: 5px;
+}

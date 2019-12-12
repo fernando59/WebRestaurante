@@ -1,11 +1,15 @@
 <mat-toolbar class="barra">
         <mat-toolbar-row>
-          <span>Restaurante Ken</span>
-          <button type="button" mat-icon-button (click)="drawer.toggle()">
-            <mat-icon mat-button>reorder</mat-icon>
-          </button>
-          <button>Cerrar Sesión</button>
-          <app-notificacion></app-notificacion>
+          <div class="con">
+              <span>Restaurante Ken</span>
+              <button type="button" mat-icon-button (click)="drawer.toggle()">
+                <mat-icon mat-button>reorder</mat-icon>
+              </button>
+           
+             <!--<app-notificacion></app-notificacion> --> 
+          </div>
+       
+          <button mat-button class="but" (click)="cerrarSesion()">Cerrar Sesión</button>
         </mat-toolbar-row>
         
       
@@ -17,8 +21,24 @@
           
           <mat-drawer #drawer class="left" mode="side">
              <div class="perfil">
-                <h2>Fernando</h2>
+               <img src="./user.png" alt="ffsa">
+              
              </div>
+             <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header  class="acordeon">
+                        <mat-panel-title>
+                          Inicio
+                        </mat-panel-title>
+                        
+                      </mat-expansion-panel-header>
+                      <div  class="menu">
+                          <a [routerLink]="['graficos/line']">Inicio</a>
+                        
+                        
+                       </div>
+                </mat-expansion-panel>
+              </mat-accordion>
              <!--------------------------Pedidos-->
               <mat-accordion>
                 <mat-expansion-panel>
