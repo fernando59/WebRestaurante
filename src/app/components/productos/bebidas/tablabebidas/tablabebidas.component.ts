@@ -21,7 +21,7 @@ export class TablabebidasComponent implements OnInit {
     //buscador
     buscar:string;
   listaBebidas:MatTableDataSource<any>
-  displayedColumns:string[]=['codigo','nombre','descripcion','precio','sw_stock','unidad_de_medida','Opciones']
+  displayedColumns:string[]=['codigo','nombre','descripcion','precio','unidad_de_medida','Opciones']
 
   //variable para sort y paginator
   @ViewChild(MatSort,{static:false}) sort:MatSort;

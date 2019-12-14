@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
 import { Router } from '@angular/router';
+import { PersonaService } from 'src/app/services/persona/persona.service';
 @Component({
   selector: 'app-crear-reserva',
   templateUrl: './crear-reserva.component.html',
@@ -30,11 +31,13 @@ disable:boolean=false;
     private dialog:MatDialog,
     private snackbar:MatSnackBar,
     private router: Router,
+    private _servicePersona:PersonaService
     
   ) { }
   listamesas:any;
+  listaclientes:any
   ngOnInit() {
-    
+    this.clientes()
     this._serviceMesa.getMesas().subscribe(res=>{
       this.mesa=res.data;
       this.listamesas=this.mesa;//.filter(item=>item.estado=='A')
@@ -44,6 +47,12 @@ disable:boolean=false;
   ngOnDestroy()
   {
     this._serviceReserva.form.reset();
+  }
+  clientes()
+  {
+    this._servicePersona.getCliente().subscribe(res=>{
+      this.listaclientes=res.data
+    })
   }
   onOpen()
   {

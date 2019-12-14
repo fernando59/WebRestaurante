@@ -49,3 +49,6 @@ a:hover{
     flex-direction: column;
     margin-top: 10px;
 }
+.cliente:hover{
+    cursor: pointer;
+}

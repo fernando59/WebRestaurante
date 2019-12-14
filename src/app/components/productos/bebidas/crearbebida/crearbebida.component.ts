@@ -23,8 +23,13 @@ export class CrearbebidaComponent implements OnInit {
   ) { }
     //variables
     public  unidadMedidaItems:any;
-    file:File=null
+    file:Array<File>
     file2:any;
+    archivo={
+      nombre:null,
+      nombreArchivo:null,
+      base64Text:null
+    }
   ngOnInit() {
     this.drowdownRefresh();
   }
@@ -43,25 +48,44 @@ export class CrearbebidaComponent implements OnInit {
       console.log(error)
     })
   }
-  onSubmit(form:NgForm)
-  {
-    console.log(this._serviceBebida.form.value.imagen)
-    console.log(this._serviceBebida.form.value)
-    
-   /* this._serviceBebida.insertBebida(this._serviceBebida.form.value).subscribe(res=>{
-      this.snackbar.open('Creado exitosamente','',{
-        duration:3000,
-        verticalPosition:'top'
-  
-    })
-    console.log(form.value)
-  })*/
+
+    _leer(reader){
+      let binary=reader.target.result;
+      this.archivo.base64Text=btoa(binary)
+     //this._serviceBebida.form.controls['imagen'].setValue(btoa( binary))
     }
-    showPreview(event :HtmlInputEvent) {
-      let res;
-      this.file=event.target.files[0];
-      console.log(this.file)
-      let reader = new FileReader();
+    showPreview(event) {
+      let fil;
+      let files=event.target.files;
+      fil=files[0]
+      this.archivo.nombreArchivo=fil.name
+      if(files && fil)
+      {
+        let reader=new FileReader()
+        reader.onload=this._leer.bind(this);
+        reader.readAsBinaryString(fil)
+      }
+     // console.log(imagen)
+      console.log(files)
+     this._serviceBebida.form.controls['imagen'].setValue(this.archivo)
+      console.log(this.archivo);
+      
+    };
+    onSubmit(form:NgForm)
+    {
+      console.log(this._serviceBebida.form.value.imagen)
+      console.log(this._serviceBebida.form.value)
+      
+      this._serviceBebida.insertBebida(this._serviceBebida.form.value).subscribe(res=>{
+        this.snackbar.open('Creado exitosamente','',{
+          duration:3000,
+          verticalPosition:'top'
+    
+      })
+      console.log(form.value)
+    })
+      }
+      /*-let reader = new FileReader();
       reader.readAsDataURL(this.file);
       reader.readAsText(this.file)
       console.log(reader.readAsText(this.file))
@@ -75,11 +99,12 @@ export class CrearbebidaComponent implements OnInit {
       console.log(res)
       this._serviceBebida.form.controls['imagen'].setValue(res)
       //this._serviceBebida.form.
-      console.log(this._serviceBebida.form.value.imagen)
+      console.log(this._serviceBebida.form.value.imagen)*/
   }
   /*
       const file = (event.target as HTMLInputElement).files[0];
       this._serviceBebida.form.controls['imagen'].setValue(file)
       console.log(this._serviceBebida.form.value)
       }*/
-}
+
+ 

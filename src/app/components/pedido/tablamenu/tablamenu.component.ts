@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges , Even
 import { BebidaService } from 'src/app/services/bebida/bebida.service';
 import { Producto } from 'src/app/models/producto';
 import { IncrementarService } from 'src/app/services/incrementar/incrementar.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tablamenu',
@@ -12,11 +13,13 @@ export class TablamenuComponent implements OnInit, OnChanges {
 
   constructor(
     private _serviceProductos:BebidaService,
-    public _serviceIncrementar:IncrementarService
+    public _serviceIncrementar:IncrementarService,
+    private rutaActiva: ActivatedRoute,
   ) { }
     bebida:any;
     @Input()  categoria:string;
     public bebidaslist:Producto;
+    estado:boolean=true
   ngOnInit() {
    
   
@@ -60,12 +63,19 @@ export class TablamenuComponent implements OnInit, OnChanges {
     })
   }
   onAdd(producto:Producto){
+    if(this.rutaActiva.snapshot.params.codigo!=null){
+      this.estado=false;
+    }
+    
   
-    this._serviceIncrementar.sumar(parseInt( producto.codigo.toString()),parseInt( producto.precio.toString()))
+    this._serviceIncrementar.sumar(parseInt( producto.codigo.toString()),parseInt( producto.precio.toString()),this.estado)
   
   }
   onRest(producto:Producto){
-    this._serviceIncrementar.restar(parseInt( producto.codigo.toString()),parseInt( producto.precio.toString()))
+    if(this.rutaActiva.snapshot.params.codigo!=null){
+      this.estado=false;
+    }
+    this._serviceIncrementar.restar(parseInt( producto.codigo.toString()),parseInt( producto.precio.toString()),this.estado)
 
   
   }

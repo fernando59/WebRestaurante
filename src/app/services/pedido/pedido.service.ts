@@ -32,6 +32,10 @@ export class PedidoService {
   {
     return this.http.post(this.url+'productos/crearDetalle.php',detalle)
   }
+  eliminarDetallePedido(detalle)
+  {
+    return this.http.delete(this.url+'productos/eliminarDetalle.php',detalle)
+  }
   obtenerUltimoId():Observable<any>
   {
     return this.http.get(this.url+'pedidos/ultimo.php');

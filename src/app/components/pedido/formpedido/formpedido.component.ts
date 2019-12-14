@@ -21,6 +21,8 @@ export class FormpedidoComponent implements OnInit, OnChanges,OnDestroy {
   verificar: number = 0;
   disable: boolean = false;
   enviar: any;
+  enviar2:any;
+  enviar3:any
   constructor(
     public _serviceReserva: ReservaService,
     private _serviceMesa: MesaService,
@@ -115,15 +117,37 @@ export class FormpedidoComponent implements OnInit, OnChanges,OnDestroy {
   {
     this._serviceIncrementar.suma=[];
     this._serviceIncrementar.res=0;
+    this._serviceIncrementar.agregar=[]
+    this._serviceIncrementar.eliminar=[]
     this._serviceReserva.form.reset();
     this._servicePedido.form.reset();
     console.log('destruido')
   }
   onSubmit(form: NgForm) {
+    let codigo=this.rutaActiva.snapshot.params.codigo
     this._serviceReserva.form.controls['numero_personas'].setValue(1);
     if(this.rutaActiva.snapshot.params.codigo!=null){
-   
-     }
+
+        this._serviceIncrementar.agregar.map(agre=>{
+          let enviar={id_pedido: this.rutaActiva.snapshot.params.codigo, id_producto:agre, cantidad: 1, precio: 0}
+          this._servicePedido.insertDetallePedido(enviar).subscribe(res=>{
+             console.log(res)
+          })
+          console.log(agre)
+          console.log('agregando')
+        })
+        this._serviceIncrementar.eliminar.map(des=>{
+          this.enviar3={id_pedido:parseInt( codigo), id_producto:des}
+          this._servicePedido.eliminarDetallePedido(this.enviar3).subscribe(res=>{
+             console.log(res)
+          })
+          console.log(des)
+          console.log('eliminando')
+        })
+    
+     }else{
+
+     
     this._serviceReserva.insertReserva(this._serviceReserva.form.value).subscribe(res => {
 
       this._serviceReserva.obtenerUltimoId().subscribe(codigo => {
@@ -187,6 +211,6 @@ export class FormpedidoComponent implements OnInit, OnChanges,OnDestroy {
     })
 
 
-  
+  }
   }
 }
